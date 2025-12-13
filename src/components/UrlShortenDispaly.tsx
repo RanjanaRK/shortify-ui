@@ -6,7 +6,7 @@ const UrlShortenDispaly = () => {
   return (
     <>
       <div className="border">
-        <Tabs defaultValue="account" className="w-115">
+        <Tabs defaultValue="account" className="w-115 bg-white">
           <TabsList className="w-full">
             <TabsTrigger value="account" className="">
               Account
@@ -15,7 +15,7 @@ const UrlShortenDispaly = () => {
           </TabsList>
           <TabsContent
             value="account"
-            className="animate-in fade-in-0 slide-in-from-left-2 duration-300"
+            className="animate-in fade-in-0 slide-in-from-left-2 duration-300 "
           >
             Make changes to your account here.
           </TabsContent>
