@@ -1,0 +1,81 @@
+import { Copy, LinkIcon } from "lucide-react";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "./ui/form";
+import { Button } from "./ui/button";
+import { useForm } from "react-hook-form";
+
+const UrlShortenForm = () => {
+  const form = useForm({
+    // resolver: zodResolver(formSchema),
+    // defaultValues: {
+    //   originalUrl: "",
+    // },
+  });
+
+  return (
+    <>
+      <div className="w-full max-w-xl rounded-2xl border bg-white p-6 shadow-sm">
+        <Form {...form}>
+          <form className="space-y-4">
+            {/* Original URL */}
+            <FormField
+              //   control={form.control}
+              name="originalUrl"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Original URL</FormLabel>
+                  <FormControl>
+                    <div className="relative">
+                      <LinkIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                      <input
+                        placeholder="https://example.com/very-long-url"
+                        className="pl-9"
+                        {...field}
+                      />
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {/* Submit */}
+            <Button type="submit" className="w-full">
+              Shorten URL
+            </Button>
+          </form>
+        </Form>
+
+        {/* Short URL output */}
+        {/* {shortUrl && ( */}
+        <div className="mt-6 space-y-2">
+          <label className="text-sm font-medium">Short URL</label>
+          <div className="flex items-center gap-2">
+            <input
+              //   value={shortUrl}
+              readOnly
+            />
+            <Button
+              type="button"
+              variant="outline"
+              // onClick={handleCopy}
+              className="flex items-center gap-2"
+            >
+              <Copy className="h-4 w-4" />
+              {/* {copied ? "Copied" : "Copy"} */}
+            </Button>
+          </div>
+        </div>
+        {/* )} */}
+      </div>
+    </>
+  );
+};
+
+export default UrlShortenForm;
