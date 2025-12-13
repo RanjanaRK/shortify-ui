@@ -3,8 +3,8 @@ import Link from "next/link";
 const Navbar = () => {
   return (
     <>
-      <nav className="w-full  bg-linear-to-r from-sky-700 to-sky-950 shadow-lg">
-        <div className="mx-auto flex max-w-7xl items-center justify-between text-white px-8 py-3">
+      <nav className="w-full  bg-linear-to-r from-sky-700 to-sky-950 shadow-lg border border-sky-900">
+        <div className="mx-auto flex max-w-7xl items-center justify-between text-white px-4 md:px-8 lg:px-12 py-3">
           <Link href="/" className="text-xl font-bold tracking-tight ">
             MyLogo
           </Link>
