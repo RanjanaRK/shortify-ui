@@ -7,8 +7,11 @@ import { Link, QrCode } from "lucide-react";
 const UrlShortenDispaly = () => {
   return (
     <>
-      <div className="border">
-        <Tabs defaultValue="account" className="w-115 bg-white">
+      <div className="">
+        <Tabs
+          defaultValue="account"
+          className="w-115 h-85 rounded-lg   bg-white"
+        >
           <TabsList className="w-full">
             <TabsTrigger value="account" className="">
               <Link /> Shorten a Link
@@ -19,7 +22,7 @@ const UrlShortenDispaly = () => {
           </TabsList>
           <TabsContent
             value="account"
-            className="animate-in fade-in-0 slide-in-from-left-2 duration-300 "
+            className="animate-in p-6 fade-in-0 slide-in-from-left-2 duration-300 "
           >
             <UrlShortenForm />
           </TabsContent>
