@@ -32,7 +32,7 @@ const UrlShortenForm = () => {
                 <FormLabel>Original URL</FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <LinkIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                    <LinkIcon className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
                     <Input
                       placeholder="https://example.com/very-long-url"
                       className="pl-9"
@@ -53,7 +53,6 @@ const UrlShortenForm = () => {
         </form>
       </Form>
 
-      {/* Short URL output */}
       {/* {shortUrl && ( */}
       <div className="mt-6 space-y-2">
         <label className="text-sm font-medium">Short URL</label>
