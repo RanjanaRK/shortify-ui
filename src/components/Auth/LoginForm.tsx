@@ -16,15 +16,35 @@ const LoginForm = () => {
   const form = useForm();
   return (
     <>
-      <div className="">
+      <div className="w-115 bg-white p-6 rounded-lg">
+        <div className="">
+          <div className="">Login</div>
+          <div className="">Don't have an account? Sign Up</div>
+        </div>
         <Form {...form}>
           <form className="space-y-8">
             <FormField
               control={form.control}
-              name="username"
+              name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input placeholder="shadcn" {...field} />
+                  </FormControl>
+                  <FormDescription>
+                    This is your public display name.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password</FormLabel>
                   <FormControl>
                     <Input placeholder="shadcn" {...field} />
                   </FormControl>
