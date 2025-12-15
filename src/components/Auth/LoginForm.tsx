@@ -16,7 +16,7 @@ const LoginForm = () => {
   const form = useForm();
   return (
     <>
-      <div className="w-115 bg-white p-6 rounded-lg">
+      <div className="w-115 rounded-lg bg-white p-6">
         <div className="">
           <div className="">Login</div>
           <div className="">Don't have an account? Sign Up</div>
