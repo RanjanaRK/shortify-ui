@@ -10,21 +10,28 @@ import {
 import { Button } from "./ui/button";
 import { useForm } from "react-hook-form";
 import { Input } from "./ui/input";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { urlFormSchema } from "@/lib/zodSchema";
+import { UrlFormSchemaType } from "@/lib/types";
 
 const UrlShortenForm = () => {
-  const form = useForm({
-    // resolver: zodResolver(formSchema),
-    // defaultValues: {
-    //   originalUrl: "",
-    // },
+  const form = useForm<UrlFormSchemaType>({
+    resolver: zodResolver(urlFormSchema),
+    defaultValues: {
+      originalUrl: "",
+    },
   });
+
+  const handleSumbit = async (urlData: UrlFormSchemaType) => {
+    console.log(urlData);
+  };
 
   return (
     <>
       <Form {...form}>
-        <form className="space-y-4">
+        <form onSubmit={form.handleSubmit(handleSumbit)} className="space-y-4">
           <FormField
-            //   control={form.control}
+            control={form.control}
             name="originalUrl"
             render={({ field }) => (
               <FormItem>
