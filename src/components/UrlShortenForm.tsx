@@ -23,13 +23,12 @@ const UrlShortenForm = () => {
     <>
       <Form {...form}>
         <form className="space-y-4">
-          {/* Original URL */}
           <FormField
             //   control={form.control}
             name="originalUrl"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Original URL</FormLabel>
+                <FormLabel>Long URL</FormLabel>
                 <FormControl>
                   <div className="relative">
                     <LinkIcon className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
@@ -46,8 +45,7 @@ const UrlShortenForm = () => {
             )}
           />
 
-          {/* Submit */}
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full bg-green-800">
             Shorten URL
           </Button>
         </form>
