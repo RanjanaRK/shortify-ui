@@ -27,8 +27,8 @@ const LoginForm = () => {
     },
   });
 
-  const handleSumbit = async (urlData: LoginFormSchemaType) => {
-    console.log(urlData);
+  const handleSumbit = async (loginData: LoginFormSchemaType) => {
+    console.log(loginData);
   };
 
   return (
