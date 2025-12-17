@@ -77,6 +77,11 @@ const UrlShortenForm = () => {
           </Button>
         </div>
       </div>
+      <div className="grid grid-cols-3 gap-4">
+        <Button>Visit URL</Button>
+        <Button>Share</Button>
+        <Button>Copy</Button>
+      </div>
       {/* )} */}
     </>
   );

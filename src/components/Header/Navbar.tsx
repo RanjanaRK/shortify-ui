@@ -10,11 +10,14 @@ const Navbar = () => {
           </Link>
 
           <div className="flex items-center gap-4 font-bold">
-            <Link href="/login" className="hover:text-white hover:underline">
+            <Link
+              href="/auth/login"
+              className="hover:text-white hover:underline"
+            >
               Login
             </Link>
             <Link
-              href="/signup"
+              href="/auth/signup"
               className="rounded-lg bg-white/10 px-4 py-2 text-sm backdrop-blur hover:bg-white/20"
             >
               Sign Up
