@@ -1,5 +1,5 @@
 const SingUpForm = () => {
-  return <div>Enter</div>;
+  return <></>;
 };
 
 export default SingUpForm;

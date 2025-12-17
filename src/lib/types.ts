@@ -1,4 +1,6 @@
 import z from "zod";
-import { urlFormSchema } from "./zodSchema";
+import { loginFormSchema, signUpFormSchema, urlFormSchema } from "./zodSchema";
 
 export type UrlFormSchemaType = z.infer<typeof urlFormSchema>;
+export type LoginFormSchemaType = z.infer<typeof loginFormSchema>;
+export type SignUpFormSchemaTypes = z.infer<typeof signUpFormSchema>;

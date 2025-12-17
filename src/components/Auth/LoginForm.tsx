@@ -10,13 +10,27 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { LoginFormSchemaType } from "@/lib/types";
+import { loginFormSchema } from "@/lib/zodSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Eye, EyeClosed } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const LoginForm = () => {
   const [show, setShow] = useState(false);
-  const form = useForm();
+  const form = useForm<LoginFormSchemaType>({
+    resolver: zodResolver(loginFormSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  const handleSumbit = async (urlData: LoginFormSchemaType) => {
+    console.log(urlData);
+  };
+
   return (
     <>
       <div className="w-130 space-y-10 rounded-lg bg-white p-6">
@@ -31,7 +45,10 @@ const LoginForm = () => {
         </div>
         <hr />
         <Form {...form}>
-          <form className="space-y-8">
+          <form
+            onSubmit={form.handleSubmit(handleSumbit)}
+            className="space-y-8"
+          >
             <FormField
               control={form.control}
               name="email"
