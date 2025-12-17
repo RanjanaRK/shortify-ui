@@ -16,7 +16,7 @@ import { Eye, EyeClosed } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-const SingUpForm = () => {
+const SignupForm = () => {
   const [show, setShow] = useState(false);
   const form = useForm<SignUpFormSchemaTypes>({
     resolver: zodResolver(signUpFormSchema),
@@ -35,7 +35,7 @@ const SingUpForm = () => {
     <>
       <div className="w-130 space-y-10 rounded-lg bg-white p-6">
         <div className="space-y-2.5">
-          <div className="text-4xl font-bold text-gray-800">Log In</div>
+          <div className="text-4xl font-bold text-gray-800">Sign Up</div>
           <div className="text-xl text-gray-800">
             Already have an account?{" "}
             <span className="font-bold text-sky-700 hover:underline">
@@ -106,7 +106,7 @@ const SingUpForm = () => {
             />
 
             <Button type="submit" className="w-full">
-              Submit
+              Sign Up
             </Button>
           </form>
         </Form>
@@ -115,4 +115,4 @@ const SingUpForm = () => {
   );
 };
 
-export default SingUpForm;
+export default SignupForm;
