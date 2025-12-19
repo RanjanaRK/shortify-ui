@@ -14,10 +14,12 @@ import { LoginFormSchemaType } from "@/lib/types";
 import { loginFormSchema } from "@/lib/zodSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Eye, EyeClosed } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const LoginForm = () => {
+  const router = useRouter();
   const [show, setShow] = useState(false);
   const form = useForm<LoginFormSchemaType>({
     resolver: zodResolver(loginFormSchema),
@@ -33,6 +35,9 @@ const LoginForm = () => {
     console.log(message);
     console.log(success);
     console.log(data);
+    if (success) {
+      router.push("/");
+    }
   };
 
   return (
