@@ -9,6 +9,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import useLogin from "@/hooks/auth/useLogin";
 import { LoginFormSchemaType } from "@/lib/types";
 import { loginFormSchema } from "@/lib/zodSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -28,6 +29,10 @@ const LoginForm = () => {
 
   const handleSumbit = async (loginData: LoginFormSchemaType) => {
     console.log(loginData);
+    const { message, success, data } = await useLogin(loginData);
+    console.log(message);
+    console.log(success);
+    console.log(data);
   };
 
   return (
