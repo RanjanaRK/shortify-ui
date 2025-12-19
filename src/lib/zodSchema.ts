@@ -1,8 +1,7 @@
-import z, { email } from "zod";
+import z from "zod";
 
 export const urlFormSchema = z.object({
   originalUrl: z.string(),
-  //   shortCode: z.string(),
 });
 
 export const loginFormSchema = z.object({
