@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import UrlShortenForm from "./UrlShortenForm";
 import { Link, QrCode } from "lucide-react";
 
-const UrlShortenDispaly = () => {
+const UrlShortenDispaly = ({ currentUerId }: { currentUerId: string }) => {
   return (
     <>
       <div className="">

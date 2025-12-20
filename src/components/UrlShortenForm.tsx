@@ -1,4 +1,4 @@
-import { Copy, LinkIcon } from "lucide-react";
+import { Copy, ExternalLink, LinkIcon } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -14,8 +14,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { urlFormSchema } from "@/lib/zodSchema";
 import { UrlFormSchemaType } from "@/lib/types";
 import useUrlShorten from "@/hooks/url/useUrlShorten";
+import { useState } from "react";
+import Link from "next/link";
 
 const UrlShortenForm = () => {
+  const [shortUrl, setShortUrl] = useState<string>("");
+  const [copied, setCopied] = useState(false);
+
   const form = useForm<UrlFormSchemaType>({
     resolver: zodResolver(urlFormSchema),
     defaultValues: {
@@ -29,6 +34,16 @@ const UrlShortenForm = () => {
     console.log(message);
     console.log(success);
     console.log(data);
+    setShortUrl(data!?.shortUrl);
+  };
+
+  const handleCopy = async () => {
+    if (!shortUrl) return;
+
+    await navigator.clipboard.writeText(shortUrl);
+    setCopied(true);
+
+    setTimeout(() => setCopied(false), 10000);
   };
 
   return (
@@ -64,28 +79,34 @@ const UrlShortenForm = () => {
       </Form>
 
       {/* {shortUrl && ( */}
-      <div className="mt-6 space-y-2">
+      <div className=""></div>
+      <div className="mt-6">
         <label className="text-sm font-medium">Short URL</label>
         <div className="flex items-center gap-2">
-          <Input
-            //   value={shortUrl}
-            readOnly
-          />
+          <Input value={shortUrl} readOnly />
           <Button
             type="button"
             variant="outline"
-            // onClick={handleCopy}
+            onClick={handleCopy}
             className="flex items-center gap-2"
           >
             <Copy className="h-4 w-4" />
-            {/* {copied ? "Copied" : "Copy"} */}
+            {copied ? "Copied" : "Copy"}
           </Button>
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-4">
-        <Button>Visit URL</Button>
+      <div className="mt-6 grid grid-cols-3 gap-4">
+        <Button asChild>
+          <Link href={shortUrl} target="_blank" rel="noopener noreferrer">
+            <ExternalLink className="mr-2 h-4 w-4" />
+            Visit
+          </Link>
+        </Button>
         <Button>Share</Button>
-        <Button>Copy</Button>
+
+        <Button onClick={() => navigator.clipboard.writeText(shortUrl)}>
+          Copy
+        </Button>
       </div>
       {/* )} */}
     </>

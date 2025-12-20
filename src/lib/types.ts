@@ -13,4 +13,12 @@ export type SignupResponse = {
 };
 export type MessageResponse = {
   message: string;
+  shortUrl: string;
 };
+
+export interface User {
+  _id: string;
+  name: string;
+  email: string;
+  createdAt: string;
+}
