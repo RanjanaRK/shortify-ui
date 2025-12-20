@@ -5,7 +5,6 @@ import { HTTPError } from "ky";
 const useUrlShorten = async (urlData: UrlFormSchemaType) => {
   try {
     const response = await kyClient.post("api/urlShort", {
-      //   headers: { "x-anon-id": getAnonId() },
       json: {
         originalUrl: urlData.originalUrl,
       },
