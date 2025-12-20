@@ -1,4 +1,10 @@
-import { Copy, ExternalLink, LinkIcon } from "lucide-react";
+import {
+  Copy,
+  ExternalLink,
+  Facebook,
+  LinkIcon,
+  MessageCircle,
+} from "lucide-react";
 import {
   Form,
   FormControl,
@@ -78,37 +84,37 @@ const UrlShortenForm = () => {
         </form>
       </Form>
 
-      {/* {shortUrl && ( */}
-      <div className=""></div>
-      <div className="mt-6">
-        <label className="text-sm font-medium">Short URL</label>
-        <div className="flex items-center gap-2">
-          <Input value={shortUrl} readOnly />
-          <Button
-            type="button"
-            variant="outline"
-            onClick={handleCopy}
-            className="flex items-center gap-2"
-          >
-            <Copy className="h-4 w-4" />
-            {copied ? "Copied" : "Copy"}
-          </Button>
-        </div>
-      </div>
-      <div className="mt-6 grid grid-cols-3 gap-4">
-        <Button asChild>
-          <Link href={shortUrl} target="_blank" rel="noopener noreferrer">
-            <ExternalLink className="mr-2 h-4 w-4" />
-            Visit
-          </Link>
-        </Button>
-        <Button>Share</Button>
+      {shortUrl && (
+        <>
+          <div className="mt-6">
+            <label className="text-sm font-medium">Short URL</label>
+            <div className="flex items-center gap-2">
+              <Input value={shortUrl} readOnly />
+              <Button
+                type="button"
+                variant="outline"
+                onClick={handleCopy}
+                className="flex items-center gap-2"
+              >
+                <Copy className="h-4 w-4" />
+                {copied ? "Copied" : "Copy"}
+              </Button>
+            </div>
+          </div>
+          <div className="mt-6 grid grid-cols-2 gap-4">
+            <Button asChild>
+              <Link href={shortUrl} target="_blank" rel="noopener noreferrer">
+                <ExternalLink className="mr-2 h-4 w-4" />
+                Visit
+              </Link>
+            </Button>
 
-        <Button onClick={() => navigator.clipboard.writeText(shortUrl)}>
-          Copy
-        </Button>
-      </div>
-      {/* )} */}
+            <Button onClick={() => navigator.clipboard.writeText(shortUrl)}>
+              Copy
+            </Button>
+          </div>
+        </>
+      )}
     </>
   );
 };
