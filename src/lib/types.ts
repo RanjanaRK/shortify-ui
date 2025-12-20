@@ -8,3 +8,6 @@ export type SignUpFormSchemaTypes = z.infer<typeof signUpFormSchema>;
 export type LoginResponse = {
   message: string;
 };
+export type SignupResponse = {
+  message: string;
+};
