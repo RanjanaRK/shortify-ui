@@ -9,14 +9,17 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import useSignUp from "@/hooks/auth/useSignUp";
 import { SignUpFormSchemaTypes } from "@/lib/types";
 import { signUpFormSchema } from "@/lib/zodSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Eye, EyeClosed } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const SignupForm = () => {
+  const router = useRouter();
   const [show, setShow] = useState(false);
   const form = useForm<SignUpFormSchemaTypes>({
     resolver: zodResolver(signUpFormSchema),
@@ -29,6 +32,13 @@ const SignupForm = () => {
 
   const handleSumbit = async (signUpData: SignUpFormSchemaTypes) => {
     console.log(signUpData);
+    const { message, success, data } = await useSignUp(signUpData);
+    console.log(message);
+    console.log(success);
+    console.log(data);
+    if (success) {
+      router.push("/auth/login");
+    }
   };
 
   return (
