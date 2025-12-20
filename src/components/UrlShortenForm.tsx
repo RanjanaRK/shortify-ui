@@ -13,6 +13,7 @@ import { Input } from "./ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { urlFormSchema } from "@/lib/zodSchema";
 import { UrlFormSchemaType } from "@/lib/types";
+import useUrlShorten from "@/hooks/url/useUrlShorten";
 
 const UrlShortenForm = () => {
   const form = useForm<UrlFormSchemaType>({
@@ -24,6 +25,10 @@ const UrlShortenForm = () => {
 
   const handleSumbit = async (urlData: UrlFormSchemaType) => {
     console.log(urlData);
+    const { message, success, data } = await useUrlShorten(urlData);
+    console.log(message);
+    console.log(success);
+    console.log(data);
   };
 
   return (

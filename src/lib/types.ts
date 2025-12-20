@@ -11,3 +11,6 @@ export type LoginResponse = {
 export type SignupResponse = {
   message: string;
 };
+export type MessageResponse = {
+  message: string;
+};
