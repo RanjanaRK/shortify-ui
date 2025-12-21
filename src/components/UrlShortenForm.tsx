@@ -22,6 +22,7 @@ import { UrlFormSchemaType } from "@/lib/types";
 import useUrlShorten from "@/hooks/url/useUrlShorten";
 import { useState } from "react";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 const UrlShortenForm = () => {
   const [shortUrl, setShortUrl] = useState<string>("");
@@ -41,6 +42,12 @@ const UrlShortenForm = () => {
     console.log(success);
     console.log(data);
     setShortUrl(data!?.shortUrl);
+
+    if (success) {
+      toast.success(message);
+    } else {
+      toast.error(message);
+    }
   };
 
   const handleCopy = async () => {
