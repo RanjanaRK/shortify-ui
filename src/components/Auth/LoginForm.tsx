@@ -17,6 +17,7 @@ import { Eye, EyeClosed } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -31,12 +32,12 @@ const LoginForm = () => {
 
   const handleSumbit = async (loginData: LoginFormSchemaType) => {
     console.log(loginData);
-    const { message, success, data } = await useLogin(loginData);
-    console.log(message);
-    console.log(success);
-    console.log(data);
+    const { message, success } = await useLogin(loginData);
     if (success) {
+      toast.success(message);
       router.push("/");
+    } else {
+      toast.error(message);
     }
   };
 
