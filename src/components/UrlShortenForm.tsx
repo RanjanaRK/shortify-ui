@@ -1,5 +1,6 @@
 import {
   Copy,
+  CopyCheck,
   ExternalLink,
   Facebook,
   LinkIcon,
@@ -23,6 +24,7 @@ import useUrlShorten from "@/hooks/url/useUrlShorten";
 import { useState } from "react";
 import Link from "next/link";
 import { toast } from "react-toastify";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
 const UrlShortenForm = () => {
   const [shortUrl, setShortUrl] = useState<string>("");
@@ -97,28 +99,57 @@ const UrlShortenForm = () => {
             <label className="text-sm font-medium">Short URL</label>
             <div className="flex items-center gap-2">
               <Input value={shortUrl} readOnly />
-              <Button
-                type="button"
-                variant="outline"
-                onClick={handleCopy}
-                className="flex items-center gap-2"
-              >
-                <Copy className="h-4 w-4" />
-                {copied ? "Copied" : "Copy"}
-              </Button>
+
+              <Tooltip>
+                <TooltipTrigger
+                  onClick={() => navigator.clipboard.writeText(shortUrl)}
+                  asChild
+                >
+                  <Button onClick={handleCopy} variant={"outline"}>
+                    {copied ? (
+                      <CopyCheck className="h-4 w-4" />
+                    ) : (
+                      <Copy className="h-4 w-4" />
+                    )}
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Copy</p>
+                </TooltipContent>
+              </Tooltip>
             </div>
           </div>
           <div className="mt-6 grid grid-cols-2 gap-4">
-            <Button asChild>
-              <Link href={shortUrl} target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="mr-2 h-4 w-4" />
-                Visit
-              </Link>
-            </Button>
-
-            <Button onClick={() => navigator.clipboard.writeText(shortUrl)}>
-              Copy
-            </Button>
+            <Tooltip>
+              <TooltipTrigger
+                onClick={() => navigator.clipboard.writeText(shortUrl)}
+                className="text-primary-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive inline-flex h-9 shrink-0 items-center justify-center gap-2 rounded-md bg-sky-600 px-4 py-2 text-sm font-medium whitespace-nowrap transition-all outline-none hover:bg-sky-700 focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 has-[>svg]:px-3 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+              >
+                <Link
+                  href={shortUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center"
+                >
+                  <ExternalLink className="mr-2 h-4 w-4" />
+                  Visit
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Visit URL</p>
+              </TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger
+                onClick={() => navigator.clipboard.writeText(shortUrl)}
+                className="text-primary-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive inline-flex h-9 shrink-0 items-center justify-center gap-2 rounded-md bg-sky-600 px-4 py-2 text-sm font-medium whitespace-nowrap transition-all outline-none hover:bg-sky-700 focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 has-[>svg]:px-3 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+              >
+                Copy
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Copy</p>
+              </TooltipContent>
+            </Tooltip>
           </div>
         </>
       )}

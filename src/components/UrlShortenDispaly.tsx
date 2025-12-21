@@ -8,10 +8,7 @@ const UrlShortenDispaly = () => {
   return (
     <>
       <div className="">
-        <Tabs
-          defaultValue="account"
-          className="h-fit w-115 rounded-lg bg-white"
-        >
+        <Tabs defaultValue="account" className="h-85 w-115 rounded-lg bg-white">
           <TabsList className="w-full">
             <TabsTrigger value="urlShorten" className="">
               <Link /> Shorten a Link
