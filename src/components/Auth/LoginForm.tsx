@@ -31,7 +31,6 @@ const LoginForm = () => {
   });
 
   const handleSumbit = async (loginData: LoginFormSchemaType) => {
-    console.log(loginData);
     const { message, success } = await useLogin(loginData);
     if (success) {
       toast.success(message);
