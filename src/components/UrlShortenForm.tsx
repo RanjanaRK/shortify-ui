@@ -1,11 +1,13 @@
-import {
-  Copy,
-  CopyCheck,
-  ExternalLink,
-  Facebook,
-  LinkIcon,
-  MessageCircle,
-} from "lucide-react";
+import useUrlShorten from "@/hooks/url/useUrlShorten";
+import { UrlFormSchemaType } from "@/lib/types";
+import { urlFormSchema } from "@/lib/zodSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Copy, CopyCheck, ExternalLink, LinkIcon } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { Button } from "./ui/button";
 import {
   Form,
   FormControl,
@@ -14,16 +16,7 @@ import {
   FormLabel,
   FormMessage,
 } from "./ui/form";
-import { Button } from "./ui/button";
-import { useForm } from "react-hook-form";
 import { Input } from "./ui/input";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { urlFormSchema } from "@/lib/zodSchema";
-import { UrlFormSchemaType } from "@/lib/types";
-import useUrlShorten from "@/hooks/url/useUrlShorten";
-import { useState } from "react";
-import Link from "next/link";
-import { toast } from "react-toastify";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
 const UrlShortenForm = () => {
@@ -40,9 +33,7 @@ const UrlShortenForm = () => {
   const handleSumbit = async (urlData: UrlFormSchemaType) => {
     console.log(urlData);
     const { message, success, data } = await useUrlShorten(urlData);
-    console.log(message);
-    console.log(success);
-    console.log(data);
+
     setShortUrl(data!?.shortUrl);
 
     if (success) {
