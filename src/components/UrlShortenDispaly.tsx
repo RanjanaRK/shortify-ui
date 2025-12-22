@@ -1,8 +1,8 @@
 "use client";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import UrlShortenForm from "./UrlShortenForm";
 import { Link, QrCode } from "lucide-react";
+import UrlShortenForm from "./UrlShortenForm";
 
 const UrlShortenDispaly = () => {
   return (
