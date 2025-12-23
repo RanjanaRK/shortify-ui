@@ -1,14 +1,27 @@
 "use client";
+import uselogout from "@/hooks/auth/uselogout";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 import { Button } from "../ui/button";
 
 const LogoutButton = () => {
   const router = useRouter();
 
+  const handleLogout = async () => {
+    const result = await uselogout();
+
+    if (result.success) {
+      toast.success(result.message || "Logged out successfully");
+      router.push("/login");
+      router.refresh(); // clears client cache (important)
+    } else {
+      toast.error(result.message);
+    }
+  };
   return (
     <>
       <Button
-        onClick={() => {}}
+        onClick={handleLogout}
         className="rounded-md bg-red-500 px-4 py-2 text-white hover:bg-red-600"
       >
         Logout

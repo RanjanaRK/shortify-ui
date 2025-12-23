@@ -1,4 +1,5 @@
 import Link from "next/link";
+import LogoutButton from "../Auth/LogoutButton";
 
 const Navbar = () => {
   return (
@@ -22,6 +23,7 @@ const Navbar = () => {
             >
               Sign Up
             </Link>
+            <LogoutButton />
           </div>
         </div>
       </nav>
