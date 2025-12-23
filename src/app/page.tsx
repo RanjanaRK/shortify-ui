@@ -1,10 +1,13 @@
 import UrlShortenDispaly from "@/components/UrlShortenDispaly";
 import useGetShortUrl from "@/hooks/url/useGetShortUrl";
 import { useGetCurrentUser } from "@/hooks/user/useGetCurrentUser";
+import useUserActivity from "@/hooks/user/useUserActivity";
 
 const page = async () => {
-  // const user = await useGetCurrentUser();
-  // console.log(user);
+  const userurl = await useUserActivity();
+  console.log(userurl);
+  const user = await useGetCurrentUser();
+  console.log(user);
 
   // const abc = user?._id;
 
