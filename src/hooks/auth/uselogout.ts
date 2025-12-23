@@ -4,9 +4,7 @@ import { HTTPError } from "ky";
 
 const uselogout = async () => {
   try {
-    const result = await kyClient
-      .post("/auth/logout", {})
-      .json<LoginResponse>();
+    const result = await kyClient.post("auth/logout").json<LoginResponse>();
 
     return {
       success: true,
