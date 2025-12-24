@@ -30,8 +30,8 @@ export type ShortUrl = {
   createdBy: string | null;
   anonId: string | null;
   clicks: number;
-  createdAt: string; // ISO date string
-  updatedAt: string; // ISO date string
+  createdAt: string;
+  updatedAt: string;
   __v: number;
 };
 
@@ -39,4 +39,5 @@ export type GetUrlsResponse = {
   success: boolean;
   count: number;
   data: ShortUrl[];
+  message?: string;
 };

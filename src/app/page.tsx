@@ -21,7 +21,7 @@ const page = async () => {
     <>
       <div className="grid h-[90dvh] place-items-center">
         <UrlShortenDispaly />
-        <UserLinks />
+        <UserLinks urls={userurl} />
       </div>
     </>
   );

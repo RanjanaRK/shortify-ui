@@ -1,14 +1,21 @@
 import { kyServer } from "@/lib/ky/kyServer";
-import { ShortUrl } from "@/lib/types";
+import { GetUrlsResponse } from "@/lib/types";
 import { HTTPError } from "ky";
 import { cookies } from "next/headers";
 
-const useUserActivity = async () => {
+const useUserActivity = async (): Promise<GetUrlsResponse> => {
   try {
     const token = (await cookies()).get("jwt-token")?.value;
-    const anonToken = (await cookies()).get("anon-id")?.value;
 
-    if (!token) return null;
+    // 🔴 NEVER return null
+    if (!token) {
+      return {
+        success: false,
+        count: 0,
+        data: [],
+        message: "Unauthorized",
+      };
+    }
 
     const response = await kyServer
       .get("api/activity", {
@@ -16,7 +23,7 @@ const useUserActivity = async () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .json<ShortUrl[]>();
+      .json<GetUrlsResponse>();
 
     return response;
   } catch (error) {
@@ -25,13 +32,16 @@ const useUserActivity = async () => {
 
       return {
         success: false,
-        message: errorBody.message || "Login failed",
+        count: 0,
+        data: [],
+        message: errorBody.message || "Failed to fetch activity",
       };
     }
 
-    /* Network / unexpected errors */
     return {
       success: false,
+      count: 0,
+      data: [],
       message: "Something went wrong. Please try again.",
     };
   }
