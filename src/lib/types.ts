@@ -16,9 +16,21 @@ export type MessageResponse = {
   shortUrl: string;
 };
 
-export interface User {
+export type User = {
   _id: string;
   name: string;
   email: string;
   createdAt: string;
-}
+};
+
+export type ShortUrl = {
+  _id: string;
+  originalUrl: string;
+  shortCode: string;
+  clicks: number;
+  createdBy: string | null;
+  anonId: string | null;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+};

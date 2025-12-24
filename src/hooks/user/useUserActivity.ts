@@ -1,4 +1,5 @@
 import { kyServer } from "@/lib/ky/kyServer";
+import { ShortUrl } from "@/lib/types";
 import { HTTPError } from "ky";
 import { cookies } from "next/headers";
 
@@ -15,7 +16,7 @@ const useUserActivity = async () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .json();
+      .json<ShortUrl[]>();
 
     return response;
   } catch (error) {
