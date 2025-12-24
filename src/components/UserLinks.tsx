@@ -11,7 +11,7 @@ const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
   const originalUrl = "https://github.com/ai/nanoid#readme";
 
   if (!urls.success) {
-    return <p>Failed to load links</p>;
+    return <p>Login to see your activity</p>;
   }
 
   return (
