@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
 const UserLinks = () => {
@@ -28,7 +27,6 @@ const UserLinks = () => {
           </div>
 
           <div className="flex gap-3">
-            {/* Visit */}
             <Tooltip>
               <TooltipTrigger asChild>
                 <motion.div
@@ -49,7 +47,6 @@ const UserLinks = () => {
               <TooltipContent>Open short URL</TooltipContent>
             </Tooltip>
 
-            {/* Copy */}
             <Tooltip>
               <TooltipTrigger asChild>
                 <motion.button
