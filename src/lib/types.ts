@@ -27,10 +27,16 @@ export type ShortUrl = {
   _id: string;
   originalUrl: string;
   shortCode: string;
-  clicks: number;
   createdBy: string | null;
   anonId: string | null;
-  createdAt: string;
-  updatedAt: string;
+  clicks: number;
+  createdAt: string; // ISO date string
+  updatedAt: string; // ISO date string
   __v: number;
+};
+
+export type GetUrlsResponse = {
+  success: boolean;
+  count: number;
+  data: ShortUrl[];
 };
