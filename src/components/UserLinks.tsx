@@ -20,7 +20,7 @@ const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="rounded-xl border bg-white p-6 shadow-sm hover:shadow-md"
+        className="w-full rounded-xl border bg-white p-6 shadow-sm hover:shadow-md sm:w-2xl"
       >
         {urls.data?.map((url) => {
           return (
