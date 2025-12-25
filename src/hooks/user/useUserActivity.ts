@@ -1,46 +1,3 @@
-// const useUserActivity = async (): Promise<GetUrlsResponse> => {
-//   try {
-//     // const token = (await cookies()).get("jwt-token")?.value;
-//     // const anontoken = (await cookies()).get("anon-id")?.value;
-
-//     // 🔴 NEVER return null
-//     // if (!token) {
-//     //   return {
-//     //     success: false,
-//     //     count: 0,
-//     //     data: [],
-//     //     message: "Unauthorized",
-//     //   };
-//     // }
-
-//     const response = await kyServer
-//       .get("api/anonactivity", {})
-//       .json<GetUrlsResponse>();
-
-//     return response;
-//   } catch (error) {
-//     if (error instanceof HTTPError) {
-//       const errorBody = await error.response.json<{ message?: string }>();
-
-//       return {
-//         success: false,
-//         count: 0,
-//         data: [],
-//         message: errorBody.message || "Failed to fetch activity",
-//       };
-//     }
-
-//     return {
-//       success: false,
-//       count: 0,
-//       data: [],
-//       message: "Something went wrong. Please try again.",
-//     };
-//   }
-// };
-
-// export default useUserActivity;
-
 import { kyServer } from "@/lib/ky/kyServer";
 import { GetUrlsResponse } from "@/lib/types";
 import { HTTPError } from "ky";
@@ -51,7 +8,6 @@ const useUserActivity = async (): Promise<GetUrlsResponse> => {
     const token = (await cookies()).get("jwt-token")?.value;
     const anontoken = (await cookies()).get("anon-id")?.value;
 
-    // 🔴 NEVER return null
     if (!token) {
       return {
         success: false,
