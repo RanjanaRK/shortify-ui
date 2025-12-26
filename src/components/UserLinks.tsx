@@ -34,16 +34,14 @@ const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
           const isCopied = copiedId === url._id;
           return (
             <div
-              className="flex flex-col gap-4 border-b md:flex-row md:items-center md:justify-between md:gap-40"
+              className="flex flex-col gap-4 border-b py-4 md:flex-row md:items-center md:justify-between md:gap-40"
               key={url._id}
             >
               <div className="space-y-2">
-                {/* <p className="text-muted-foreground text-sm">Original URL</p> */}
                 <p className="truncate text-sm font-medium">
                   {url.originalUrl}
                 </p>
 
-                {/* <p className="text-muted-foreground text-sm">Short URL</p> */}
                 <p className="truncate font-semibold text-sky-600">
                   {shortUrl}
                 </p>
