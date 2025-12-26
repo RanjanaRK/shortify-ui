@@ -5,14 +5,21 @@ import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import { GetUrlsResponse } from "@/lib/types";
+import { useState } from "react";
 
 const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
-  const shortUrl = "https://tinyurl.com/f6et3az7";
-  const originalUrl = "https://github.com/ai/nanoid#readme";
+  const [copiedId, setCopiedId] = useState<string | null>(null);
 
   if (!urls.success) {
     return <p>Login to see your activity</p>;
   }
+
+  const handleCopy = async (shortUrl: string, id: string) => {
+    await navigator.clipboard.writeText(shortUrl);
+    setCopiedId(id);
+
+    setTimeout(() => setCopiedId(null), 2000);
+  };
 
   return (
     <>
@@ -23,6 +30,8 @@ const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
         className="w-full rounded-xl border bg-white p-6 shadow-sm hover:shadow-md sm:w-2xl"
       >
         {urls.data?.map((url) => {
+          const shortUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/${url.shortCode}`;
+          const isCopied = copiedId === url._id;
           return (
             <div
               className="flex flex-col gap-4 border-b md:flex-row md:items-center md:justify-between md:gap-40"
@@ -36,7 +45,7 @@ const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
 
                 {/* <p className="text-muted-foreground text-sm">Short URL</p> */}
                 <p className="truncate font-semibold text-sky-600">
-                  {`${process.env.NEXT_PUBLIC_API_URL}/api/${url.shortCode}`}
+                  {shortUrl}
                 </p>
               </div>
 
@@ -48,9 +57,7 @@ const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
                       whileTap={{ scale: 0.95 }}
                     >
                       <Link
-                        href={`${process.env.NEXT_PUBLIC_API_URL}/api/${url.shortCode}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href={shortUrl}
                         className="inline-flex items-center gap-2 rounded-md bg-sky-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-sky-700"
                       >
                         <ExternalLink className="h-4 w-4" />
@@ -64,7 +71,7 @@ const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <motion.button
-                      //   onClick={}
+                      onClick={() => handleCopy(shortUrl, url._id)}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="hover:bg-muted inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm font-medium transition"
