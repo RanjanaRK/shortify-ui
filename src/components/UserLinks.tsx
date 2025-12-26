@@ -29,14 +29,14 @@ const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
               key={url._id}
             >
               <div className="space-y-2">
-                <p className="text-muted-foreground text-sm">Original URL</p>
+                {/* <p className="text-muted-foreground text-sm">Original URL</p> */}
                 <p className="truncate text-sm font-medium">
                   {url.originalUrl}
                 </p>
 
-                <p className="text-muted-foreground text-sm">Short URL</p>
+                {/* <p className="text-muted-foreground text-sm">Short URL</p> */}
                 <p className="truncate font-semibold text-sky-600">
-                  {url.shortCode}
+                  {`${process.env.NEXT_PUBLIC_API_URL}/api/${url.shortCode}`}
                 </p>
               </div>
 
@@ -48,7 +48,7 @@ const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
                       whileTap={{ scale: 0.95 }}
                     >
                       <Link
-                        href={shortUrl}
+                        href={`${process.env.NEXT_PUBLIC_API_URL}/api/${url.shortCode}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 rounded-md bg-sky-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-sky-700"
