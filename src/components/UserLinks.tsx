@@ -76,7 +76,7 @@ const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
                       whileTap={{ scale: 0.95 }}
                       className="hover:bg-muted inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm font-medium transition"
                     >
-                      Copy
+                      {copiedId ? "Copied" : "Copy"}
                     </motion.button>
                   </TooltipTrigger>
                   <TooltipContent>copy</TooltipContent>
