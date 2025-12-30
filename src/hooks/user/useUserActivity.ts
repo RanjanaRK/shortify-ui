@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 
 const useUserActivity = async (): Promise<GetUrlsResponse> => {
   try {
-    const token = (await cookies()).get("access-token")?.value;
+    const token = (await cookies()).get("access_token")?.value;
     const anontoken = (await cookies()).get("anon-id")?.value;
 
     if (!token) {
@@ -19,10 +19,9 @@ const useUserActivity = async (): Promise<GetUrlsResponse> => {
 
     const response = await kyServer
       .get("api/activity", {
-        // headers: {
-        //   Authorization: `Bearer ${token}`,
-        // },
-        credentials: "include",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
       .json<GetUrlsResponse>();
 

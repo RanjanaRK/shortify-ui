@@ -30,7 +30,7 @@ import { cookies } from "next/headers";
 
 export const useGetCurrentUser = async (): Promise<User | null> => {
   try {
-    const token = (await cookies()).get("jwt-token")?.value;
+    const token = (await cookies()).get("access_token")?.value;
 
     if (!token) return null;
 
