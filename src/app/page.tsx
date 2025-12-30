@@ -1,11 +1,8 @@
 import UrlShortenDispaly from "@/components/UrlShortenDispaly";
 import UserLinks from "@/components/UserLinks";
 import { useGetCurrentUser } from "@/hooks/user/useGetCurrentUser";
-import useUserActivity from "@/hooks/user/useUserActivity";
 
 const page = async () => {
-  const userurl = await useUserActivity();
-  console.log(userurl);
   const user = await useGetCurrentUser();
   console.log(user);
 
@@ -20,7 +17,6 @@ const page = async () => {
     <>
       <div className="grid h-[90dvh] place-items-center">
         <UrlShortenDispaly />
-        <UserLinks urls={userurl} />
       </div>
     </>
   );
