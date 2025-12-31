@@ -32,13 +32,11 @@ const RootLayout = ({ children }: RootLayoutProps) => {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <QueryClientProvider client={queryClient}>
-          <Navbar />
-          <main className="mx-auto h-full w-full bg-sky-950 px-8">
-            {children}
-          </main>
-          <ToastContainer />
-        </QueryClientProvider>
+        <Navbar />
+        <main className="mx-auto h-full w-full bg-sky-950 px-8">
+          {children}
+        </main>
+        <ToastContainer />
       </body>
     </html>
   );
