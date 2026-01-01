@@ -1,3 +1,5 @@
+"use client";
+
 import { getCurrentUser } from "@/lib/api/getCurrentuser";
 import { User } from "@/lib/types";
 import { useEffect, useState } from "react";
