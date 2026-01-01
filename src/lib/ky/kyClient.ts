@@ -1,12 +1,12 @@
 import ky from "ky";
 
 let isRefreshing = false;
-let refreshQueue: (() => void)[] = [];
+let subscribers: (() => void)[] = [];
 
-const processQueue = () => {
-  refreshQueue.forEach((cb) => cb());
-  refreshQueue = [];
-};
+function onRefreshed() {
+  subscribers.forEach((cb) => cb());
+  subscribers = [];
+}
 
 export const kyClient = ky.create({
   prefixUrl: process.env.NEXT_PUBLIC_API_URL!,
@@ -17,30 +17,36 @@ export const kyClient = ky.create({
   hooks: {
     afterResponse: [
       async (request, options, response) => {
-        if (response.status !== 401) return response;
-
-        // prevent infinite refresh loop
-        if (request.url.includes("/auth/refresh")) {
+        if (response.status !== 401) {
           return response;
         }
 
-        if (isRefreshing) {
-          await new Promise<void>((resolve) => refreshQueue.push(resolve));
-          return kyClient(request, options);
+        // prevent infinite loop
+        if (request.url.includes("/auth/refresh")) {
+          throw response;
         }
 
-        isRefreshing = true;
+        if (!isRefreshing) {
+          isRefreshing = true;
 
-        try {
-          await kyClient.post("auth/refresh");
-          processQueue();
-          return kyClient(request, options);
-        } catch (err) {
-          refreshQueue = [];
-          throw err;
-        } finally {
-          isRefreshing = false;
+          try {
+            await kyClient.post("auth/refresh");
+            onRefreshed();
+          } catch (error) {
+            subscribers = [];
+            throw error;
+          } finally {
+            isRefreshing = false;
+          }
         }
+
+        // wait for refresh to finish
+        await new Promise<void>((resolve) => {
+          subscribers.push(resolve);
+        });
+
+        // ✅ retry original request (NO prefixUrl access)
+        return ky(request, options);
       },
     ],
   },
