@@ -1,5 +1,3 @@
-"use client";
-
 import UrlShortenDispaly from "@/components/UrlShortenDispaly";
 import UserLinks from "@/components/UserLinks";
 import UserProfile from "@/components/UserProfile";

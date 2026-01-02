@@ -1,3 +1,5 @@
+"use client";
+
 import useUser from "@/hooks/user/useUser ";
 
 const UserProfile = () => {
@@ -9,7 +11,7 @@ const UserProfile = () => {
   return (
     <>
       <div className="">
-        <h1>Hello {user.name}</h1>
+        <h1>Hello {user.user.name}</h1>
       </div>
     </>
   );
