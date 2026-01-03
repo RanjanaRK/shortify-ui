@@ -9,8 +9,6 @@ const page = () => {
     <>
       <div className="grid h-[90dvh] place-items-center">
         <UrlShortenDispaly />
-
-        <UserProfile />
       </div>
     </>
   );
