@@ -5,23 +5,11 @@ import { useGetCurrentUser } from "@/hooks/user/useGetCurrentUser";
 import useUserActivity from "@/hooks/user/useUserActivity";
 
 const page = () => {
-  // const user = await useGetCurrentUser();
-  // console.log(user);
-
-  // const userUrls = await useUserActivity();
-
-  // const abc = user?._id;
-
-  // if (!user?._id) {
-  //   return;
-  // }
-  // const data = await useGetShortUrl(user!._id);
-
   return (
     <>
       <div className="grid h-[90dvh] place-items-center">
         <UrlShortenDispaly />
-        {/* <UserLinks urls={userUrls} /> */}
+
         <UserProfile />
       </div>
     </>
