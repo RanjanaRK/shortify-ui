@@ -1,9 +1,5 @@
 import ActivityPage from "@/components/ActivityList";
 import UrlShortenDispaly from "@/components/UrlShortenDispaly";
-import UserLinks from "@/components/UserLinks";
-import UserProfile from "@/components/UserProfile";
-import { useGetCurrentUser } from "@/hooks/user/useGetCurrentUser";
-import useUserActivity from "@/hooks/user/useUserActivity";
 
 const page = async () => {
   return (
