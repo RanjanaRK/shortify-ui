@@ -1,3 +1,5 @@
+// "use client";
+
 import { cookies } from "next/headers";
 import LogoutButton from "../Auth/LogoutButton";
 import AuthButton from "./AuthButton";
@@ -14,7 +16,6 @@ const Header = async () => {
   return (
     <>
       <UserProfile />
-      <LogoutButton />
     </>
   );
 };
