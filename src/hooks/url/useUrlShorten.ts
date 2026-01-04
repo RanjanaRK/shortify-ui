@@ -8,6 +8,7 @@ const useUrlShorten = async (urlData: UrlFormSchemaType) => {
       json: {
         originalUrl: urlData.originalUrl,
       },
+      credentials: "include",
     });
 
     const result = await response.json<MessageResponse>();

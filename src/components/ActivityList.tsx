@@ -1,16 +1,15 @@
 "use client";
 
-// import { useUserActivity } from "@/hooks/user/useUserActivity";
-import UserLinks from "./UserLinks";
+import UserLinks from "@/components/UserLinks";
+import useUserActivity from "@/hooks/user/useUserActivity";
 
-const ActivityList = () => {
-  // const { data, isLoading, isError, error } = useUserActivity();
+const ActivityPage = () => {
+  const { data, loading } = useUserActivity();
 
-  return (
-    <>
-      <div className="">{/* <UserLinks urls={data} /> */}</div>
-    </>
-  );
+  if (loading) return <p>Loading...</p>;
+  if (!data) return <p>No data</p>;
+
+  return <UserLinks urls={data} />;
 };
 
-export default ActivityList;
+export default ActivityPage;

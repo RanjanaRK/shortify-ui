@@ -5,19 +5,18 @@ import UserProfile from "../UserProfile";
 
 const Header = async () => {
   const token = (await cookies()).get("access_token")?.value;
+  const rtoken = (await cookies()).get("refresh_token")?.value;
 
-  if (!token) {
+  if (!rtoken) {
     return <AuthButton />;
   }
 
-  if (token) {
-    return (
-      <>
-        <UserProfile />
-        <LogoutButton />
-      </>
-    );
-  }
+  return (
+    <>
+      <UserProfile />
+      <LogoutButton />
+    </>
+  );
 };
 
 export default Header;
