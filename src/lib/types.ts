@@ -17,7 +17,10 @@ export type MessageResponse = {
 };
 
 export type User = {
-  user: { _id: string; name: string; email: string; createdAt: string };
+  _id: string;
+  name: string;
+  email: string;
+  createdAt: string;
 };
 
 export type ShortUrl = {

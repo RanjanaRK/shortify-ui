@@ -1,13 +1,11 @@
-"use client";
-
 import useUserActivity from "@/hooks/user/useClientActivity";
 import UserLinks from "./UserLinks";
+import { getUserUrlLinks } from "@/lib/api/user.server";
 
 const ActivityClient = () => {
-  const { data, isLoading } = useUserActivity();
+  const data = getUserUrlLinks();
 
-  if (isLoading) return <p>Loading...</p>;
-  if (!data?.success) return <p>{data?.message}</p>;
+  console.log(data);
 
   return <UserLinks urls={data} />;
 };

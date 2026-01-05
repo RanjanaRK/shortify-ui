@@ -1,8 +1,6 @@
 import Link from "next/link";
-import LogoutButton from "../Auth/LogoutButton";
-import AuthButton from "./AuthButton";
+
 import Header from "./Header";
-import UserProfile from "../UserProfile";
 
 const Navbar = () => {
   return (

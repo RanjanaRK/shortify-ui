@@ -1,23 +1,14 @@
-// "use client";
-
-import { cookies } from "next/headers";
-import LogoutButton from "../Auth/LogoutButton";
 import AuthButton from "./AuthButton";
 import UserProfile from "../UserProfile";
+import { getCurrentUserServer } from "@/lib/api/user.server";
 
 const Header = async () => {
-  const token = (await cookies()).get("access_token")?.value;
-  const rtoken = (await cookies()).get("refresh_token")?.value;
+  const data = await getCurrentUserServer();
 
-  if (!rtoken) {
-    return <AuthButton />;
-  }
+  console.log(data);
 
-  return (
-    <>
-      <UserProfile />
-    </>
-  );
+  if (!data) return <AuthButton />;
+  return <UserProfile user={data.user} />;
 };
 
 export default Header;

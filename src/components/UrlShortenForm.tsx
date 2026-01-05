@@ -1,3 +1,5 @@
+"use client";
+
 import useUrlShorten from "@/hooks/url/useUrlShorten";
 import { UrlFormSchemaType } from "@/lib/types";
 import { urlFormSchema } from "@/lib/zodSchema";
@@ -18,6 +20,7 @@ import {
 } from "./ui/form";
 import { Input } from "./ui/input";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
+import { useUrlShort } from "@/hooks/url/useUrlShort";
 
 const UrlShortenForm = () => {
   const [shortUrl, setShortUrl] = useState<string>("");
@@ -30,16 +33,17 @@ const UrlShortenForm = () => {
     },
   });
 
+  const { mutateAsync, isPending } = useUrlShort();
+
   const handleSumbit = async (urlData: UrlFormSchemaType) => {
-    console.log(urlData);
-    const { message, success, data } = await useUrlShorten(urlData);
+    try {
+      const data = await mutateAsync(urlData);
 
-    setShortUrl(data!?.shortUrl);
-
-    if (success) {
-      toast.success(message);
-    } else {
-      toast.error(message);
+      setShortUrl(data.shortUrl);
+      toast.success(data.message);
+      form.reset();
+    } catch (err: any) {
+      toast.error(err.message);
     }
   };
 
