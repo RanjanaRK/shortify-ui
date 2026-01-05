@@ -1,16 +1,9 @@
 "use client";
 
-import useUser from "@/hooks/user/useUser ";
-import LogoutButton from "./Auth/LogoutButton";
 import { User } from "@/lib/types";
-import { use } from "react";
+import LogoutButton from "./Auth/LogoutButton";
 
 const UserProfile = ({ user }: { user: User }) => {
-  // const { user, loading } = useUser();
-
-  // if (loading) return <p>Loading...</p>;
-  // if (!user) return <p>Unauthorized</p>;
-
   return (
     <>
       <div className="">

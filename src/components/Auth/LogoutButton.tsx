@@ -12,8 +12,8 @@ const LogoutButton = () => {
 
     if (result.success) {
       toast.success(result.message || "Logged out successfully");
-      router.push("/login");
-      router.refresh(); // clears client cache (important)
+      router.push("/");
+      router.refresh();
     } else {
       toast.error(result.message);
     }

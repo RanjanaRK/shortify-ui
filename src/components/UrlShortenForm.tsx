@@ -20,7 +20,8 @@ import {
 } from "./ui/form";
 import { Input } from "./ui/input";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
-import { useUrlShort } from "@/hooks/url/useUrlShort";
+import { UrlShorten } from "@/lib/api/url.server";
+import { urlRefetchAction } from "@/hooks/action";
 
 const UrlShortenForm = () => {
   const [shortUrl, setShortUrl] = useState<string>("");
@@ -33,15 +34,19 @@ const UrlShortenForm = () => {
     },
   });
 
-  const { mutateAsync, isPending } = useUrlShort();
-
   const handleSumbit = async (urlData: UrlFormSchemaType) => {
     try {
-      const data = await mutateAsync(urlData);
+      const { data, message, success } = await UrlShorten(urlData);
+      console.log(data);
 
-      setShortUrl(data.shortUrl);
-      toast.success(data.message);
-      form.reset();
+      if (success) {
+        toast.success(message);
+        setShortUrl(data?.shortUrl!);
+        await urlRefetchAction();
+      }
+      if (!success) {
+        toast.error(message);
+      }
     } catch (err: any) {
       toast.error(err.message);
     }

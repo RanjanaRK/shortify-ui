@@ -1,13 +1,12 @@
-import useUserActivity from "@/hooks/user/useClientActivity";
-import UserLinks from "./UserLinks";
 import { getUserUrlLinks } from "@/lib/api/user.server";
+import UserLinks from "./UserLinks";
 
-const ActivityClient = () => {
-  const data = getUserUrlLinks();
+const ActivityClient = async () => {
+  const data = await getUserUrlLinks();
 
   console.log(data);
 
-  return <UserLinks urls={data} />;
+  return <UserLinks urls={data!} />;
 };
 
 export default ActivityClient;
