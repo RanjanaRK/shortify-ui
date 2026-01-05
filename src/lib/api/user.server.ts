@@ -1,9 +1,8 @@
-// lib/api/user.server.ts
+import { HTTPError } from "ky";
 import { cookies } from "next/headers";
 import "server-only";
-import { GetUrlsResponse, ShortUrl } from "../types";
 import { kyServer } from "../ky/kyServer";
-import { HTTPError } from "ky";
+import { GetUrlsResponse } from "../types";
 
 export const getCurrentUserServer = async () => {
   try {
@@ -18,6 +17,7 @@ export const getCurrentUserServer = async () => {
       headers: {
         Cookie: cookieHeader,
       },
+      next: { tags: ["currentUser"] },
     });
 
     const data = await res.json();
@@ -55,7 +55,7 @@ export const getUserUrlLinks = async () => {
       headers: {
         Cookie: cookieHeader,
       },
-      next: { tags: ["allurls"] },
+      next: { tags: [`allurls`] },
     });
 
     const data = await res.json<GetUrlsResponse>();

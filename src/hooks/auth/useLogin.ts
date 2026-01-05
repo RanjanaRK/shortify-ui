@@ -12,7 +12,7 @@ const useLogin = async (loginData: LoginFormSchemaType) => {
     });
 
     const result = await res.json<LoginResponse>();
-    console.log(result);
+    // console.log(result);
 
     return {
       success: true,

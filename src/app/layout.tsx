@@ -37,7 +37,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
             {children}
           </main>
 
-          <ToastContainer />
+          <ToastContainer position="top-left" />
         </Providers>
       </body>
     </html>

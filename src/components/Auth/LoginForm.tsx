@@ -9,6 +9,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { loginAction } from "@/hooks/action";
 import useLogin from "@/hooks/auth/useLogin";
 import { LoginFormSchemaType } from "@/lib/types";
 import { loginFormSchema } from "@/lib/zodSchema";
@@ -31,9 +32,12 @@ const LoginForm = () => {
   });
 
   const handleSumbit = async (loginData: LoginFormSchemaType) => {
-    const { message, success } = await useLogin(loginData);
+    const { success, message } = await useLogin(loginData);
     if (success) {
       toast.success(message);
+
+      await loginAction();
+      router.refresh();
       router.push("/");
     } else {
       toast.error(message);
