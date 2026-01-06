@@ -80,3 +80,41 @@ export const getUserUrlLinks = async () => {
     return null;
   }
 };
+
+export const getUrlAnalyticsFrontend = async (urlId: string) => {
+  try {
+    const cookieStore = cookies();
+
+    const cookieHeader = (await cookieStore)
+      .getAll()
+      .map((c) => c.value)
+      .join("; ");
+
+    const res = await kyServer(`api/urls/analytics/${urlId}`, {
+      headers: {
+        Cookie: cookieHeader,
+      },
+      next: { tags: [`urlClicks`] },
+    });
+
+    const data = await res.json();
+    if (!res.ok) {
+      console.error("Error fetching analytics:", data);
+      return null;
+    }
+
+    console.log("Fetched analytics:", data);
+    return data;
+  } catch (error) {
+    if (error instanceof HTTPError) {
+      const body = await error.response.json<{ message?: string }>();
+      return {
+        success: false,
+        count: 0,
+        data: [],
+        message: body.message ?? "Failed",
+      };
+    }
+    return null;
+  }
+};
