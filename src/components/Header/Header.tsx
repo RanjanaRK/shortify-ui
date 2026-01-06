@@ -11,7 +11,7 @@ const Header = async () => {
 
   console.log(data);
 
-  if (!at || !rt) return <AuthButton />;
+  if (!rt) return <AuthButton />;
   return <UserProfile user={data.user} />;
 };
 
