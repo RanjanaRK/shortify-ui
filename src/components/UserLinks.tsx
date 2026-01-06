@@ -6,8 +6,11 @@ import Link from "next/link";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import { GetUrlsResponse } from "@/lib/types";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
+  const router = useRouter();
+
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
   if (!urls.success) {
@@ -45,6 +48,12 @@ const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
                 <p className="truncate font-semibold text-sky-600">
                   {shortUrl}
                 </p>
+                <div
+                  onClick={() => router.push(`analytics/${url._id}`)}
+                  className="cursor-pointer text-xs text-gray-500 hover:text-sky-600 hover:underline"
+                >
+                  {url.clicks} clicks · View analytics
+                </div>
               </div>
 
               <div className="flex gap-3">
