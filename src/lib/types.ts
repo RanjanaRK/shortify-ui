@@ -41,3 +41,28 @@ export type GetUrlsResponse = {
   data: ShortUrl[];
   message?: string;
 };
+
+export interface UrlAnalyticsResponse {
+  url: string;
+  totalClicks: number;
+  browserStats: CountByKey[];
+  osStats: CountByKey[];
+  deviceStats: CountByKey[];
+  dailyClicks: CountByKey[];
+  recentClicks: RecentClick[];
+}
+
+export interface CountByKey {
+  _id: string;
+  count: number;
+}
+
+export interface RecentClick {
+  _id: string;
+  ip: string;
+  browser: string;
+  os: string;
+  device: string;
+  referer?: string;
+  createdAt?: string;
+}

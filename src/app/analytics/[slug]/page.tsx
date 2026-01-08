@@ -1,15 +1,22 @@
 import UrlAnalyticsModal from "@/components/AnalyticsPage";
+import { getUrlAnalytics } from "@/lib/api/user.server";
 
 interface PageProps {
   params: {
-    slug: string;
+    id: string;
   };
 }
 
-const page = ({ params }: PageProps) => {
+const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = await params;
+  const data = await getUrlAnalytics(slug);
+
+  // console.log("click analytics:", data);
+
   return (
     <>
-      <UrlAnalyticsModal urlId={""} />
+      <h1 className="text-5xl font-bold">{slug}</h1>
+      <UrlAnalyticsModal url={data} />
     </>
   );
 };

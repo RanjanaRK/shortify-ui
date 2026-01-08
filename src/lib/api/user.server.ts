@@ -2,7 +2,7 @@ import { HTTPError } from "ky";
 import { cookies } from "next/headers";
 import "server-only";
 import { kyServer } from "../ky/kyServer";
-import { GetUrlsResponse } from "../types";
+import { GetUrlsResponse, UrlAnalyticsResponse } from "../types";
 
 export const getCurrentUserServer = async () => {
   try {
@@ -81,13 +81,13 @@ export const getUserUrlLinks = async () => {
   }
 };
 
-export const getUrlAnalyticsFrontend = async (urlId: string) => {
+export const getUrlAnalytics = async (urlId: string) => {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
 
-    const cookieHeader = (await cookieStore)
+    const cookieHeader = cookieStore
       .getAll()
-      .map((c) => c.value)
+      .map((c) => `${c.name}=${c.value}`)
       .join("; ");
 
     const res = await kyServer(`api/urls/analytics/${urlId}`, {
@@ -97,7 +97,7 @@ export const getUrlAnalyticsFrontend = async (urlId: string) => {
       next: { tags: [`urlClicks`] },
     });
 
-    const data = await res.json();
+    const data = await res.json<UrlAnalyticsResponse>();
     if (!res.ok) {
       console.error("Error fetching analytics:", data);
       return null;
@@ -108,12 +108,6 @@ export const getUrlAnalyticsFrontend = async (urlId: string) => {
   } catch (error) {
     if (error instanceof HTTPError) {
       const body = await error.response.json<{ message?: string }>();
-      return {
-        success: false,
-        count: 0,
-        data: [],
-        message: body.message ?? "Failed",
-      };
     }
     return null;
   }
