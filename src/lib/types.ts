@@ -66,3 +66,23 @@ export interface RecentClick {
   referer?: string;
   createdAt?: string;
 }
+
+import { kyClient } from "@/lib/ky/kyClient";
+
+export interface GenerateQrResponse {
+  success: boolean;
+  message: string;
+  qr: string; // base64 or dataURL
+  shortUrl: string;
+  originalUrl: string;
+}
+
+export const generateQrCode = async (
+  originalUrl: string,
+): Promise<GenerateQrResponse> => {
+  return kyClient
+    .post("api/qr", {
+      json: { originalUrl },
+    })
+    .json<GenerateQrResponse>();
+};

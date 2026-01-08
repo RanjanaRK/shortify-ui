@@ -3,6 +3,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Link, QrCode } from "lucide-react";
 import UrlShortenForm from "./UrlShortenForm";
+import GenerateQr from "./GenerateQr";
 
 const UrlShortenDispaly = () => {
   return (
@@ -28,9 +29,9 @@ const UrlShortenDispaly = () => {
           </TabsContent>
           <TabsContent
             value="qrGenerate"
-            className="animate-in fade-in-0 slide-in-from-left-2 duration-300"
+            className="animate-in fade-in-0 slide-in-from-left-2 p-6 duration-300"
           >
-            Change your password here.
+            <GenerateQr />
           </TabsContent>
         </Tabs>
       </div>
