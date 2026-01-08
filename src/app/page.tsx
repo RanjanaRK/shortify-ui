@@ -4,7 +4,7 @@ import UrlShortenDispaly from "@/components/UrlShortenDispaly";
 const page = async () => {
   return (
     <>
-      <div className="grid h-[90dvh] place-items-center">
+      <div className="grid place-items-center gap-16">
         <UrlShortenDispaly />
         <ActivityClient />
       </div>

@@ -13,7 +13,7 @@ const UrlAnalyticsModal = ({ url }: Props) => {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+    <div className="flex items-center justify-center bg-black/40">
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}

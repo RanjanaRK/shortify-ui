@@ -33,7 +33,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
       >
         <Providers>
           <Navbar />
-          <main className="mx-auto h-full w-full bg-sky-950 px-8">
+          <main className="mx-auto min-h-screen w-full bg-sky-950 px-8 py-6">
             {children}
           </main>
 
