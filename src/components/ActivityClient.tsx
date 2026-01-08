@@ -4,9 +4,11 @@ import UserLinks from "./UserLinks";
 const ActivityClient = async () => {
   const data = await getUserUrlLinks();
 
-  console.log(data);
+  if (!data) {
+    return;
+  }
 
-  return <UserLinks urls={data!} />;
+  return <UserLinks urls={data} />;
 };
 
 export default ActivityClient;
