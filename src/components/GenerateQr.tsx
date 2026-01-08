@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { UrlFormSchemaType } from "@/lib/types";
 import { urlFormSchema } from "@/lib/zodSchema";
-import { LinkIcon } from "lucide-react";
+import { LinkIcon, LoaderIcon } from "lucide-react";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { generateQrCode } from "@/lib/api/url.server";
@@ -102,8 +102,12 @@ const GenerateQr = () => {
                 )}
               />
 
-              <Button type="submit" className="w-full bg-green-800">
-                Generate QR
+              <Button
+                type="submit"
+                disabled={form.formState.isSubmitting}
+                className="w-full bg-green-800"
+              >
+                {form.formState.isSubmitting ? <LoaderIcon /> : " Generate QR"}
               </Button>
             </form>
           </Form>
