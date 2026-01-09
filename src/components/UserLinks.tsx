@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
+import { Card, CardContent } from "./ui/card";
 
 const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
   const router = useRouter();
@@ -26,7 +27,59 @@ const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
 
   return (
     <>
-      <div className="w-full rounded-xl border bg-white p-6 shadow-sm hover:shadow-md sm:w-[90%] md:w-[720px] lg:w-[900px]">
+      <Card className="w-full">
+        <CardContent className="p-6">
+          {urls.data?.map((url, index) => {
+            const shortUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/${url.shortCode}`;
+            const isCopied = copiedId === url._id;
+
+            return (
+              <div
+                key={url._id}
+                className={` ${index !== urls.data.length - 1 ? "border-b" : ""} flex flex-col gap-4 py-4 md:flex-row md:items-center md:justify-between`}
+              >
+                {/* Left */}
+                <div className="space-y-2">
+                  <p className="text-sm font-medium break-words">
+                    {url.originalUrl}
+                  </p>
+
+                  <p className="truncate font-semibold text-sky-600">
+                    {shortUrl}
+                  </p>
+
+                  <div
+                    onClick={() => router.push(`analytics/${url._id}`)}
+                    className="text-muted-foreground cursor-pointer text-xs hover:underline"
+                  >
+                    {url.clicks} clicks · View analytics
+                  </div>
+                </div>
+
+                {/* Right */}
+                <div className="flex gap-3">
+                  <Link
+                    href={shortUrl}
+                    target="_blank"
+                    className="inline-flex items-center gap-2 rounded-md bg-sky-600 px-4 py-2 text-sm font-medium text-white"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    Visit
+                  </Link>
+
+                  <button
+                    onClick={() => handleCopy(shortUrl, url._id)}
+                    className="inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm font-medium"
+                  >
+                    {isCopied ? "Copied" : "Copy"}
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </CardContent>
+      </Card>
+      <div className="w-full rounded-xl border bg-white p-6 shadow-sm hover:shadow-md md:w-150 lg:w-200">
         {/* <div className="w-full rounded-xl border bg-white p-6 shadow-sm hover:shadow-md sm:w-2xl"> */}
         {urls.data?.map((url, index) => {
           const shortUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/${url.shortCode}`;
