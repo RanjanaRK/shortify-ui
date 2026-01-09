@@ -13,7 +13,7 @@ export const getCurrentUserServer = async () => {
       .map((c) => `${c.name}=${c.value}`)
       .join("; ");
 
-    const res = await fetch(`${process.env.API_URL}/api/me`, {
+    const res = await fetch(`${process.env.API_URL}/api/user/me`, {
       headers: {
         Cookie: cookieHeader,
       },
@@ -51,7 +51,7 @@ export const getUserUrlLinks = async () => {
       .map((c) => `${c.name}=${c.value}`)
       .join("; ");
 
-    const res = await kyServer(`api/activity`, {
+    const res = await kyServer(`api/user/activity`, {
       headers: {
         Cookie: cookieHeader,
       },

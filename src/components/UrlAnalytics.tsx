@@ -2,9 +2,9 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DUMMY_ANALYTICS } from "@/lib/dummy";
-import { DailyClicksChart } from "../DailyClickChart";
-import { StatsPieChart } from "./StatsPieChart";
-import { RecentClicks } from "./RecentClick";
+import { DailyClicksChart } from "./DailyClickChart";
+import { StatsPieChart } from "./ui/StatsPieChart";
+import { RecentClicks } from "./ui/RecentClick";
 import { UrlAnalyticsResponse } from "@/lib/types";
 
 export default function AnalyticsDashboard({
@@ -12,12 +12,12 @@ export default function AnalyticsDashboard({
 }: {
   data: UrlAnalyticsResponse;
 }) {
-  //   const data = DUMMY_ANALYTICS;
-
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold">URL Analytics</h1>
-      <p className="text-muted-foreground">{data.url}</p>
+      <h1 className="text-background text-2xl font-bold md:text-3xl">
+        URL Analytics
+      </h1>
+      <p className="text-muted-foreground md:text-2xl">{data.url}</p>
 
       {/* Total Clicks */}
       <Card>

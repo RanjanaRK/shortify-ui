@@ -26,12 +26,7 @@ const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
 
   return (
     <>
-      <div
-        // initial={{ opacity: 0, y: 20 }}
-        // animate={{ opacity: 1, y: 0 }}
-        // transition={{ duration: 0.4 }}
-        className="w-full rounded-xl border bg-white p-6 shadow-sm hover:shadow-md sm:w-2xl"
-      >
+      <div className="w-full rounded-xl border bg-white p-6 shadow-sm hover:shadow-md sm:w-2xl">
         {urls.data?.map((url, index) => {
           const shortUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/${url.shortCode}`;
           const isCopied = copiedId === url._id;
@@ -65,6 +60,7 @@ const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
                     >
                       <Link
                         href={shortUrl}
+                        target="_blank"
                         className="inline-flex items-center gap-2 rounded-md bg-sky-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-sky-700"
                       >
                         <ExternalLink className="h-4 w-4" />

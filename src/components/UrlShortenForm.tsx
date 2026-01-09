@@ -1,7 +1,7 @@
 "use client";
 
 import { urlRefetchAction } from "@/hooks/action";
-import { UrlShorten } from "@/lib/api/url.server";
+import { UrlShorten } from "@/lib/api/url";
 import { UrlFormSchemaType } from "@/lib/types";
 import { urlFormSchema } from "@/lib/zodSchema";
 import { zodResolver } from "@hookform/resolvers/zod";

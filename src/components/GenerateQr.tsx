@@ -17,7 +17,7 @@ import { urlFormSchema } from "@/lib/zodSchema";
 import { LinkIcon, LoaderIcon } from "lucide-react";
 import { toast } from "react-toastify";
 import { useState } from "react";
-import { generateQrCode } from "@/lib/api/url.server";
+import { generateQrCode } from "@/lib/api/url";
 import Image from "next/image";
 import { Tooltip, TooltipTrigger } from "./ui/tooltip";
 

@@ -1,6 +1,6 @@
 import UrlAnalyticsModal from "@/components/AnalyticsPage";
-import AnalyticsDashboard from "@/components/ui/UrlAnalytics";
-import UrlAnalytics from "@/components/ui/UrlAnalytics";
+import AnalyticsDashboard from "@/components/UrlAnalytics";
+import UrlAnalytics from "@/components/UrlAnalytics";
 import { getUrlAnalytics } from "@/lib/api/user.server";
 
 interface PageProps {
@@ -25,8 +25,6 @@ const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
   return (
     <>
-      <UrlAnalyticsModal url={data} />
-
       <AnalyticsDashboard data={data} />
     </>
   );

@@ -1,27 +1,33 @@
 import { kyClient } from "@/lib/ky/kyClient";
-import { GetUrlsResponse, User } from "@/lib/types";
+import { GetUrlsResponse, MessageResponse, User } from "@/lib/types";
 import { HTTPError } from "ky";
 
-export const getCurrentUser = async (): Promise<User> => {
-  const res = await kyClient.get("api/me").json<User>();
-  console.log(res);
-
-  return res;
-};
-
-export const fetchUserActivity = async (): Promise<GetUrlsResponse> => {
+export const deleteccount = async () => {
   try {
-    return await kyClient.get("api/activity").json<GetUrlsResponse>();
+    const response = await kyClient.delete("api/user/delete-account");
+
+    const result = await response.json<MessageResponse>();
+
+    console.log(result);
+
+    return {
+      success: true,
+      message: result.message,
+    };
   } catch (error) {
     if (error instanceof HTTPError) {
-      const body = await error.response.json<{ message?: string }>();
+      const errorBody = await error.response.json<{ message?: string }>();
+
       return {
         success: false,
-        count: 0,
-        data: [],
-        message: body.message ?? "Failed",
+        message: errorBody.message || "Login failed",
       };
     }
-    throw error;
+
+    /* Network / unexpected errors */
+    return {
+      success: false,
+      message: "Something went wrong. Please try again.",
+    };
   }
 };
