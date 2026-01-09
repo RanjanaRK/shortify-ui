@@ -42,7 +42,7 @@ export type GetUrlsResponse = {
   message?: string;
 };
 
-export interface UrlAnalyticsResponse {
+export type UrlAnalyticsResponse = {
   url: string;
   totalClicks: number;
   browserStats: CountByKey[];
@@ -50,14 +50,14 @@ export interface UrlAnalyticsResponse {
   deviceStats: CountByKey[];
   dailyClicks: CountByKey[];
   recentClicks: RecentClick[];
-}
+};
 
-export interface CountByKey {
+export type CountByKey = {
   _id: string;
   count: number;
-}
+};
 
-export interface RecentClick {
+export type RecentClick = {
   _id: string;
   ip: string;
   browser: string;
@@ -65,24 +65,12 @@ export interface RecentClick {
   device: string;
   referer?: string;
   createdAt?: string;
-}
+};
 
-import { kyClient } from "@/lib/ky/kyClient";
-
-export interface GenerateQrResponse {
+export type GenerateQrResponse = {
   success: boolean;
   message: string;
-  qr: string; // base64 or dataURL
+  qr: string;
   shortUrl: string;
   originalUrl: string;
-}
-
-export const generateQrCode = async (
-  originalUrl: string,
-): Promise<GenerateQrResponse> => {
-  return kyClient
-    .post("api/qr", {
-      json: { originalUrl },
-    })
-    .json<GenerateQrResponse>();
 };

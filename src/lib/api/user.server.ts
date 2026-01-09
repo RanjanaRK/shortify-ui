@@ -22,10 +22,10 @@ export const getCurrentUserServer = async () => {
 
     const data = await res.json();
 
-    if (!res.ok) {
-      console.error("Error fetching current user:", data);
-      return null;
-    }
+    // if (!res.ok) {
+    //   console.error("Error fetching current user:", data);
+    //   return null;
+    // }
 
     console.log("Current user:", data);
     return data;
@@ -60,10 +60,10 @@ export const getUserUrlLinks = async () => {
 
     const data = await res.json<GetUrlsResponse>();
 
-    if (!res.ok) {
-      console.error("Error fetching user URLs:", data);
-      return null;
-    }
+    // if (!res.ok) {
+    //   console.error("Error fetching user URLs:", data);
+    //   return null;
+    // }
 
     console.log("Fetched URLs:", data);
     return data;
@@ -98,10 +98,10 @@ export const getUrlAnalytics = async (urlId: string) => {
     });
 
     const data = await res.json<UrlAnalyticsResponse>();
-    if (!res.ok) {
-      console.error("Error fetching analytics:", data);
-      return null;
-    }
+    // if (!res.ok) {
+    //   console.error("Error fetching analytics:", data);
+    //   return null;
+    // }
 
     console.log("Fetched analytics:", data);
     return data;

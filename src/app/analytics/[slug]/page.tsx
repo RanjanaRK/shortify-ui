@@ -1,4 +1,6 @@
 import UrlAnalyticsModal from "@/components/AnalyticsPage";
+import AnalyticsDashboard from "@/components/ui/UrlAnalytics";
+import UrlAnalytics from "@/components/ui/UrlAnalytics";
 import { getUrlAnalytics } from "@/lib/api/user.server";
 
 interface PageProps {
@@ -23,8 +25,9 @@ const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
   return (
     <>
-      <h1 className="text-5xl font-bold">{slug}</h1>
       <UrlAnalyticsModal url={data} />
+
+      <AnalyticsDashboard data={data} />
     </>
   );
 };
