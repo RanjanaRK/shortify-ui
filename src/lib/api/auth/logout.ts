@@ -1,20 +1,10 @@
-"use client";
-
+import { kyClient } from "@/lib/ky/kyClient";
+import { LoginResponse } from "@/lib/types";
 import { HTTPError } from "ky";
-import { kyClient } from "../ky/kyClient";
-import { LoginFormSchemaType, LoginResponse } from "../types";
 
-export const loginUser = async (loginData: LoginFormSchemaType) => {
+const userLogout = async () => {
   try {
-    const res = await kyClient.post("auth/login", {
-      json: {
-        email: loginData.email,
-        password: loginData.password,
-      },
-    });
-
-    const result = await res.json<LoginResponse>();
-    console.log(result);
+    const result = await kyClient.post("auth/logout").json<LoginResponse>();
 
     return {
       success: true,
@@ -31,10 +21,11 @@ export const loginUser = async (loginData: LoginFormSchemaType) => {
       };
     }
 
-    /* Network / unexpected errors */
     return {
       success: false,
       message: "Something went wrong. Please try again.",
     };
   }
 };
+
+export default userLogout;

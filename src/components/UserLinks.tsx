@@ -1,12 +1,12 @@
 "use client";
 
+import { GetUrlsResponse } from "@/lib/types";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
-import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
-import { GetUrlsResponse } from "@/lib/types";
-import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
 const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
   const router = useRouter();
@@ -26,7 +26,8 @@ const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
 
   return (
     <>
-      <div className="w-full rounded-xl border bg-white p-6 shadow-sm hover:shadow-md sm:w-2xl">
+      <div className="w-full rounded-xl border bg-white p-6 shadow-sm hover:shadow-md sm:w-[90%] md:w-[720px] lg:w-[900px]">
+        {/* <div className="w-full rounded-xl border bg-white p-6 shadow-sm hover:shadow-md sm:w-2xl"> */}
         {urls.data?.map((url, index) => {
           const shortUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/${url.shortCode}`;
           const isCopied = copiedId === url._id;

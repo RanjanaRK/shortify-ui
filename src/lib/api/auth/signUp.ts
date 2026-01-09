@@ -2,7 +2,7 @@ import { kyClient } from "@/lib/ky/kyClient";
 import { SignUpFormSchemaTypes, SignupResponse } from "@/lib/types";
 import { HTTPError } from "ky";
 
-const useSignUp = async (signUpData: SignUpFormSchemaTypes) => {
+const userSignup = async (signUpData: SignUpFormSchemaTypes) => {
   try {
     const response = await kyClient.post("auth/register", {
       json: {
@@ -36,4 +36,4 @@ const useSignUp = async (signUpData: SignUpFormSchemaTypes) => {
   }
 };
 
-export default useSignUp;
+export default userSignup;

@@ -4,7 +4,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { ReactNode } from "react";
 import { ToastContainer } from "react-toastify";
 import "./globals.css";
-import Providers from "./providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,14 +30,12 @@ const RootLayout = ({ children }: RootLayoutProps) => {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Providers>
-          <Navbar />
-          <main className="mx-auto min-h-screen w-full bg-sky-950 px-8 py-6">
-            {children}
-          </main>
+        <Navbar />
+        <main className="mx-auto min-h-screen w-full bg-sky-950 px-8 py-6">
+          {children}
+        </main>
 
-          <ToastContainer position="top-left" />
-        </Providers>
+        <ToastContainer position="top-left" />
       </body>
     </html>
   );

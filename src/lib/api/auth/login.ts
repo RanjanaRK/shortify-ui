@@ -1,17 +1,19 @@
 import { kyClient } from "@/lib/ky/kyClient";
-import { MessageResponse, UrlFormSchemaType } from "@/lib/types";
+import { LoginFormSchemaType, LoginResponse } from "@/lib/types";
 import { HTTPError } from "ky";
 
-const useUrlShorten = async (urlData: UrlFormSchemaType) => {
+const userLogin = async (loginData: LoginFormSchemaType) => {
   try {
-    const response = await kyClient.post("api/urlShort", {
+    const res = await kyClient.post("auth/login", {
       json: {
-        originalUrl: urlData.originalUrl,
+        email: loginData.email,
+        password: loginData.password,
       },
-      credentials: "include",
     });
 
-    const result = await response.json<MessageResponse>();
+    const result = await res.json<LoginResponse>();
+    // console.log(result);
+
     return {
       success: true,
       message: result.message,
@@ -34,4 +36,5 @@ const useUrlShorten = async (urlData: UrlFormSchemaType) => {
     };
   }
 };
-export default useUrlShorten;
+
+export default userLogin;

@@ -1,7 +1,7 @@
-import AuthButton from "./AuthButton";
-import UserProfile from "../UserProfile";
 import { getCurrentUserServer } from "@/lib/api/user.server";
 import { cookies } from "next/headers";
+import UserProfile from "../UserProfile";
+import AuthButton from "./AuthButton";
 
 const Header = async () => {
   const data = await getCurrentUserServer();

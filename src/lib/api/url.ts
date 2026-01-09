@@ -6,7 +6,7 @@ import {
   MessageResponse,
   UrlFormSchemaType,
 } from "@/lib/types";
-import ky, { HTTPError } from "ky";
+import { HTTPError } from "ky";
 
 export const UrlShorten = async (urlData: UrlFormSchemaType) => {
   try {

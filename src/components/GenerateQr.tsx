@@ -1,7 +1,6 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -11,15 +10,15 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { generateQrCode } from "@/lib/api/url";
 import { UrlFormSchemaType } from "@/lib/types";
 import { urlFormSchema } from "@/lib/zodSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { LinkIcon, LoaderIcon } from "lucide-react";
-import { toast } from "react-toastify";
-import { useState } from "react";
-import { generateQrCode } from "@/lib/api/url";
 import Image from "next/image";
-import { Tooltip, TooltipTrigger } from "./ui/tooltip";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const GenerateQr = () => {
   const [url, setUrl] = useState("");

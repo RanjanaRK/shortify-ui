@@ -1,11 +1,10 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { DUMMY_ANALYTICS } from "@/lib/dummy";
-import { DailyClicksChart } from "./DailyClickChart";
-import { StatsPieChart } from "./ui/StatsPieChart";
-import { RecentClicks } from "./ui/RecentClick";
 import { UrlAnalyticsResponse } from "@/lib/types";
+import { DailyClicksChart } from "./DailyClickChart";
+import { RecentClicks } from "./ui/RecentClick";
+import { StatsPieChart } from "./ui/StatsPieChart";
 
 export default function AnalyticsDashboard({
   data,

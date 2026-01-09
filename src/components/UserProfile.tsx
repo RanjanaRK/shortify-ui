@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { User } from "@/lib/types";
 import LogoutButton from "./Auth/LogoutButton";
-
 import {
   AlertDialog,
   AlertDialogAction,
@@ -21,7 +20,6 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-
 import { deleteAccount } from "@/lib/api/user";
 import { Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";

@@ -1,5 +1,5 @@
 "use client";
-import uselogout from "@/hooks/auth/uselogout";
+import uselogout from "@/lib/api/auth/logout";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { Button } from "../ui/button";

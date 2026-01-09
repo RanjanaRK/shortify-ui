@@ -1,5 +1,5 @@
 import { kyClient } from "@/lib/ky/kyClient";
-import { GetUrlsResponse, MessageResponse, User } from "@/lib/types";
+import { MessageResponse } from "@/lib/types";
 import { HTTPError } from "ky";
 
 export const deleteAccount = async () => {

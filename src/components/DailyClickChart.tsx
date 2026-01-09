@@ -1,12 +1,12 @@
 "use client";
 
 import {
-  LineChart,
   Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  Tooltip,
-  ResponsiveContainer,
 } from "recharts";
 
 export function DailyClicksChart({ data }: { data: any[] }) {

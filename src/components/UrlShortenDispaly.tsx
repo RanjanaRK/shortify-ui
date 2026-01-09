@@ -2,8 +2,8 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Link, QrCode } from "lucide-react";
-import UrlShortenForm from "./UrlShortenForm";
 import GenerateQr from "./GenerateQr";
+import UrlShortenForm from "./UrlShortenForm";
 
 const UrlShortenDispaly = () => {
   return (
@@ -11,7 +11,8 @@ const UrlShortenDispaly = () => {
       <div className="">
         <Tabs
           defaultValue="urlShorten"
-          className="h-85 w-115 rounded-lg bg-white"
+          // className="w-full max-w-md rounded-lg bg-white"
+          className="h-80 w-full rounded-lg bg-white md:w-100 lg:w-140"
         >
           <TabsList className="w-full">
             <TabsTrigger value="urlShorten" className="">

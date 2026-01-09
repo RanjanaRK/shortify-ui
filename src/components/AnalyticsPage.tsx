@@ -21,10 +21,7 @@ const UrlAnalyticsModal = ({ url }: Props) => {
       >
         <div className="mb-4 flex items-center justify-between">
           <h2 className="text-lg font-semibold">URL Analytics</h2>
-          {/* <button onClick={onClose}>✕</button> */}
         </div>
-
-        {/* <p className="text-sm text-gray-400">Loading real analytics…</p> */}
 
         <div className="space-y-4">
           <p>
