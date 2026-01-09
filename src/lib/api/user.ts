@@ -2,9 +2,9 @@ import { kyClient } from "@/lib/ky/kyClient";
 import { GetUrlsResponse, MessageResponse, User } from "@/lib/types";
 import { HTTPError } from "ky";
 
-export const deleteccount = async () => {
+export const deleteAccount = async () => {
   try {
-    const response = await kyClient.delete("api/user/delete-account");
+    const response = await kyClient.delete("api/user/deleteAccount");
 
     const result = await response.json<MessageResponse>();
 
