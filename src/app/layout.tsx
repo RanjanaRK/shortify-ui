@@ -31,8 +31,10 @@ const RootLayout = ({ children }: RootLayoutProps) => {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar />
-        <main className="mx-auto min-h-screen w-full bg-sky-950 p-6">
-          {children}
+        <main className="bg-sky-950">
+          <div className="mx-auto min-h-screen w-full max-w-7xl p-6">
+            {children}
+          </div>
         </main>
 
         <ToastContainer position="top-left" />

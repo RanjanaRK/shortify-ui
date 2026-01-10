@@ -53,7 +53,7 @@ const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
                 </div>
               </div>
 
-              <div className="flex gap-3">
+              <div className="flex gap-3 md:flex-col lg:flex-row">
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <motion.div
