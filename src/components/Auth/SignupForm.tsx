@@ -52,89 +52,89 @@ const SignupForm = () => {
 
   return (
     <>
-      <div className="flex min-h-screen items-center justify-center px-4">
-        <Card className="w-full sm:w-105">
-          <CardHeader>
-            <CardTitle className="text-4xl font-bold">Sign Up</CardTitle>
+      {/* <div className="flex min-h-screen items-center justify-center"> */}
+      <Card className="w-full sm:w-105">
+        <CardHeader>
+          <CardTitle className="text-4xl font-bold">Sign Up</CardTitle>
 
-            <div>
-              Already have an account?{" "}
-              <span className="cursor-pointer font-bold text-sky-700 hover:underline">
-                Log In
-              </span>
-            </div>
-          </CardHeader>
+          <div>
+            Already have an account?{" "}
+            <span className="cursor-pointer font-bold text-sky-700 hover:underline">
+              Log In
+            </span>
+          </div>
+        </CardHeader>
 
-          <CardContent>
-            <Form {...form}>
-              <form
-                onSubmit={form.handleSubmit(handleSumbit)}
-                className="space-y-8"
-              >
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Name</FormLabel>
-                      <FormControl>
-                        <Input placeholder="shadcn" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email</FormLabel>
-                      <FormControl>
-                        <Input placeholder="shadcn" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="password"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Password</FormLabel>
+        <CardContent>
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(handleSumbit)}
+              className="space-y-8"
+            >
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="shadcn" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input placeholder="shadcn" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
 
-                      <FormControl>
-                        <div className="relative">
-                          <Input
-                            type={show ? "text" : "password"}
-                            placeholder="Enter password"
-                            {...field}
-                          />
+                    <FormControl>
+                      <div className="relative">
+                        <Input
+                          type={show ? "text" : "password"}
+                          placeholder="Enter password"
+                          {...field}
+                        />
 
-                          <button
-                            type="button"
-                            onClick={() => setShow(!show)}
-                            className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                          >
-                            {show ? <Eye /> : <EyeClosed />}
-                          </button>
-                        </div>
-                      </FormControl>
+                        <button
+                          type="button"
+                          onClick={() => setShow(!show)}
+                          className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                        >
+                          {show ? <Eye /> : <EyeClosed />}
+                        </button>
+                      </div>
+                    </FormControl>
 
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-                <Button type="submit" className="w-full">
-                  Sign Up
-                </Button>
-              </form>
-            </Form>
-          </CardContent>
-        </Card>
-      </div>
+              <Button type="submit" className="w-full">
+                Sign Up
+              </Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
+      {/* </div> */}
     </>
   );
 };

@@ -31,7 +31,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar />
-        <main className="mx-auto min-h-screen w-full bg-sky-950 px-8 py-6">
+        <main className="mx-auto min-h-screen w-full bg-sky-950 p-6">
           {children}
         </main>
 
