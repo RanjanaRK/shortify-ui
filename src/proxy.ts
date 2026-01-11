@@ -20,5 +20,5 @@ const proxy = async (req: NextRequest) => {
 export default proxy;
 
 export const config = {
-  matcher: ["/profile"],
+  matcher: ["/analytics/:slug"],
 };

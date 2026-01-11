@@ -1,5 +1,4 @@
 import LoginForm from "@/components/Auth/LoginForm";
-import LoginDisplay from "@/components/LoginDisplay";
 
 const page = () => {
   return (
