@@ -11,7 +11,7 @@ const UrlShortenDispaly = () => {
       {/* <div className=""> */}
       <Tabs
         defaultValue="urlShorten"
-        className="h-80 w-full rounded-lg bg-white md:w-100 lg:w-140"
+        className="h-87.5 w-full rounded-lg bg-white md:w-100 lg:w-140"
       >
         <TabsList className="w-full">
           <TabsTrigger value="urlShorten" className="">
