@@ -8,7 +8,6 @@ import UrlShortenForm from "./UrlShortenForm";
 const UrlShortenDispaly = () => {
   return (
     <>
-      {/* <div className=""> */}
       <Tabs
         defaultValue="urlShorten"
         className="h-87.5 w-full rounded-lg bg-white md:w-100 lg:w-140"
@@ -34,7 +33,6 @@ const UrlShortenDispaly = () => {
           <GenerateQr />
         </TabsContent>
       </Tabs>
-      {/* </div> */}
     </>
   );
 };
