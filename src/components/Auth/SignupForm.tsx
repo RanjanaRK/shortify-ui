@@ -52,7 +52,6 @@ const SignupForm = () => {
 
   return (
     <>
-      {/* <div className="flex min-h-screen items-center justify-center"> */}
       <Card className="w-full sm:w-105">
         <CardHeader>
           <CardTitle className="text-4xl font-bold">Sign Up</CardTitle>
@@ -134,7 +133,6 @@ const SignupForm = () => {
           </Form>
         </CardContent>
       </Card>
-      {/* </div> */}
     </>
   );
 };
