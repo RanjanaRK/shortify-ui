@@ -7,7 +7,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
-import { Card, CardContent } from "./ui/card";
 
 const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
   const router = useRouter();
@@ -28,7 +27,6 @@ const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
   return (
     <>
       <div className="w-full rounded-xl border bg-white p-6 shadow-sm hover:shadow-md md:w-150 lg:w-200">
-        {/* <div className="w-full rounded-xl border bg-white p-6 shadow-sm hover:shadow-md sm:w-2xl"> */}
         {urls.data?.map((url, index) => {
           const shortUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/${url.shortCode}`;
           const isCopied = copiedId === url._id;

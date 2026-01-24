@@ -1,16 +1,6 @@
 "use client";
 
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { User } from "@/lib/types";
-import LogoutButton from "./Auth/LogoutButton";
-import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
@@ -20,11 +10,21 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { deleteAccount } from "@/lib/api/user";
+import { User } from "@/lib/types";
 import { Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import LogoutButton from "./Auth/LogoutButton";
 
 const UserProfile = ({ user }: { user: User }) => {
   const [open, setOpen] = useState(false);

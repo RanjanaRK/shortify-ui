@@ -21,10 +21,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
 const GenerateQr = () => {
-  const [url, setUrl] = useState("");
-  const [loading, setLoading] = useState(false);
   const [data, setData] = useState<any>(null);
-  const [error, setError] = useState("");
 
   const form = useForm<UrlFormSchemaType>({
     resolver: zodResolver(urlFormSchema),
