@@ -1,6 +1,4 @@
-import UrlAnalyticsModal from "@/components/AnalyticsPage";
 import AnalyticsDashboard from "@/components/UrlAnalytics";
-import UrlAnalytics from "@/components/UrlAnalytics";
 import { getUrlAnalytics } from "@/lib/api/user.server";
 
 interface PageProps {
