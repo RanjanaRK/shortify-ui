@@ -36,7 +36,6 @@ const UrlShortenForm = () => {
   const handleSumbit = async (urlData: UrlFormSchemaType) => {
     try {
       const { data, message, success } = await UrlShorten(urlData);
-      console.log(data);
 
       if (success) {
         toast.success(message);

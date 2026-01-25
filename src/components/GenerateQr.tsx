@@ -10,6 +10,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { urlRefetchAction } from "@/hooks/action";
 import { generateQrCode } from "@/lib/api/url";
 import { UrlFormSchemaType } from "@/lib/types";
 import { urlFormSchema } from "@/lib/zodSchema";
@@ -35,12 +36,11 @@ const GenerateQr = () => {
       const { data, message, success } = await generateQrCode(
         values.originalUrl,
       );
-      console.log(data);
 
       if (success) {
         toast.success(message);
         setData(data);
-        // await urlRefetchAction();
+        await urlRefetchAction();
       }
       if (!success) {
         toast.error(message);

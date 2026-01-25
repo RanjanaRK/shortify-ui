@@ -12,7 +12,6 @@ const userLogin = async (loginData: LoginFormSchemaType) => {
     });
 
     const result = await res.json<LoginResponse>();
-    // console.log(result);
 
     return {
       success: true,

@@ -89,7 +89,6 @@ export const getUrlAnalytics = async (urlId: string) => {
 
     const data = await res.json<UrlAnalyticsResponse>();
 
-    console.log("Fetched analytics:", data);
     return data;
   } catch (error) {
     if (error instanceof HTTPError) {

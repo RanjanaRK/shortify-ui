@@ -8,8 +8,6 @@ export const deleteAccount = async () => {
 
     const result = await response.json<MessageResponse>();
 
-    console.log(result);
-
     return {
       success: true,
       message: result.message,
