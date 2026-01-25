@@ -1,6 +1,6 @@
-# 🔗 URL Shortener – Frontend
+# 🔗 Shortify – Frontend
 
-Frontend client for a production-grade URL shortener built with **Next.js**, **React**, **Tailwind CSS**, **Shadcn**, and **JWT authentication**.
+Frontend client for a production-grade Shortify built with **Next.js**, **React**, **Tailwind CSS**, **Shadcn**, and **JWT authentication**.
 
 It integrates with the backend to provide secure URL shortening, anonymous usage support, analytics, and on-demand QR code generation.
 
@@ -15,3 +15,9 @@ It integrates with the backend to provide secure URL shortening, anonymous usage
 - Secure logout
 - Account deletion
 - Protected routes with frontend route guards
+
+### 🕵️ Anonymous User Support
+
+- Users can generate up to **3 URLs** without signing up
+- Anonymous usage tracked via **HTTP-only cookie**
+- Cookie is cleared when the user registers or logs in
