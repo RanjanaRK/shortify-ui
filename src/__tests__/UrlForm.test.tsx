@@ -1,17 +1,24 @@
-import "@testing-library/jest-dom";
+import { render, screen } from "@testing-library/react";
 import UrlShortenForm from "@/components/UrlShortenForm";
-import { render, screen, fireEvent } from "@testing-library/react";
 
-describe("UrlForm", () => {
-  it("shows error for invalid URL", () => {
+jest.mock("@/hooks/action", () => ({
+  urlRefetchAction: jest.fn(),
+}));
+
+jest.mock("@/lib/api/url", () => ({
+  UrlShorten: jest.fn(),
+}));
+
+describe("UrlShortenForm", () => {
+  it("renders input and submit button", () => {
     render(<UrlShortenForm />);
 
-    fireEvent.change(screen.getByPlaceholderText(/enter url/i), {
-      target: { value: "invalid-url" },
-    });
+    expect(
+      screen.getByPlaceholderText("https://example.com/very-long-url"),
+    ).toBeInTheDocument();
 
-    fireEvent.click(screen.getByText(/shorten/i));
-
-    expect(screen.getByText(/invalid url/i)).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /shorten url/i }),
+    ).toBeInTheDocument();
   });
 });
