@@ -1,4 +1,4 @@
-# 🔗 URL Shortener – Backend
+# 🔗 URL Shortener – Frontend
 
 Frontend client for a production-grade URL shortener built with **Next.js**, **React**, **Tailwind CSS**, **Shadcn**, and **JWT authentication**.
 
