@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
 import UrlShortenForm from "@/components/UrlShortenForm";
+import { render, screen } from "@testing-library/react";
 
 jest.mock("@/hooks/action", () => ({
   urlRefetchAction: jest.fn(),
