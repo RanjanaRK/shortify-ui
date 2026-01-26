@@ -46,7 +46,8 @@ It integrates with the backend to provide secure URL shortening, anonymous usage
 
 ## 🧱 System Architecture
 
-````Frontend (Next.js / React)
+```
+Frontend (Next.js / React)
 ↓
 Calls backend APIs:
 
@@ -62,7 +63,7 @@ Calls backend APIs:
 ↓
 Backend (Express.js)
 ↓
-MongoDB```
-````
+MongoDB
+```
 
 ---
