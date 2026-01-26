@@ -21,3 +21,9 @@ It integrates with the backend to provide secure URL shortening, anonymous usage
 - Users can generate up to **3 URLs** without signing up
 - Anonymous usage tracked via **HTTP-only cookie**
 - Cookie is cleared when the user registers or logs in
+
+### 🔗 URL Shortening & QR Code
+
+- Create short URLs easily
+- QR code generation for authenticated users
+- Click analytics dashboard for authenticated users
