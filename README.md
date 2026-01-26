@@ -34,3 +34,13 @@ It integrates with the backend to provide secure URL shortening, anonymous usage
 - Clean dashboard layout with Tailwind CSS
 
 ---
+
+## 🛠 Tech Stack
+
+- Next.js (App Router)
+- React
+- Tailwind CSS
+- shadcn/ui
+- Ky (API communication)
+
+---
