@@ -8,13 +8,12 @@ It integrates with the backend to provide secure URL shortening, anonymous usage
 
 ## 🚀 Features
 
-### 🔐 Authentication
+### 🔐 Authentication (Overview)
 
-- User registration & login
-- JWT-based authentication (Access + Refresh Token)
-- Secure logout
-- Account deletion
-- Protected routes with frontend route guards
+- Authentication is handled by the backend
+- Secure HTTP-only cookies are used for session management
+- Frontend relies on browser-managed cookies for authenticated requests
+- No sensitive tokens are stored or accessed on the client
 
 ### 🕵️ Anonymous User Support
 
@@ -42,5 +41,28 @@ It integrates with the backend to provide secure URL shortening, anonymous usage
 - Tailwind CSS
 - shadcn/ui
 - Ky (API communication)
+
+---
+
+## 🧱 System Architecture
+
+````Frontend (Next.js / React)
+↓
+Calls backend APIs:
+
+/auth/*
+
+/api/user/*
+
+/api/urlShort
+
+/api/urls/analytics/:id
+
+/api/qr/generate
+↓
+Backend (Express.js)
+↓
+MongoDB```
+````
 
 ---
