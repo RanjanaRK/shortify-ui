@@ -27,3 +27,10 @@ It integrates with the backend to provide secure URL shortening, anonymous usage
 - Create short URLs easily
 - QR code generation for authenticated users
 - Click analytics dashboard for authenticated users
+
+### 🎨 UI/UX
+
+- Responsive and mobile-friendly
+- Clean dashboard layout with Tailwind CSS
+
+---
