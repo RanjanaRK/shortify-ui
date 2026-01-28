@@ -17,6 +17,8 @@ The frontend integrates with the Shortify backend to provide secure URL shorteni
 - Browser automatically sends cookies with requests
 - Logout support
 
+---
+
 ### 🕵️ Anonymous User Support
 
 - Users can generate up to **3 URLs** without signing up
@@ -25,7 +27,11 @@ The frontend integrates with the Shortify backend to provide secure URL shorteni
 - Cookie is cleared after login or registration
 - UI adapts based on authentication state
 
+---
+
 ### 🌐 URL Shortening UI
+
+---
 
 - Generate short URLs instantly
 - Supports both anonymous and authenticated users
