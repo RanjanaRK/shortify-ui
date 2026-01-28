@@ -75,7 +75,7 @@ MongoDB
 
 ---
 
-### Backend APIs Used
+## Backend APIs Used
 
 ```
 /auth/*
@@ -161,11 +161,11 @@ https://github.com/RanjanaRK/shortify-backend
 
 ---
 
-## 👨‍💻 Author
+# 👨‍💻 Author
 
-**Ranjana**  
+**Ranjana Kumari**  
 Full-Stack Developer (Next.js · Node.js · MongoDB · Express)
 
-🔗 LinkedIn: https://www.linkedin.com/in/rk/
+🔗 LinkedIn: https://www.linkedin.com/in/ranjanark/
 
-🐙 GitHub: https://github.com/RK
+🐙 GitHub: https://github.com/RanjanaRK
