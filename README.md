@@ -156,13 +156,10 @@ http://localhost:3000
 
 ---
 
-## 🧪 Testing & Validation
+###🧪 Testing
 
-- The application was tested during development to validate core user flows
-- Key scenarios tested include:
-  - Authentication-based route access
-  - URL redirection and analytics views
-- Test-related files were removed before deployment to keep the repository minimal
+- Components and flows were tested during development using **Jest**
+- Test utilities removed before production deployment
 
 ---
 
