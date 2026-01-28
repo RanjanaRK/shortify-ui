@@ -20,14 +20,20 @@ The frontend integrates with the Shortify backend to provide secure URL shorteni
 ### 🕵️ Anonymous User Support
 
 - Users can generate up to **3 URLs** without signing up
-- Anonymous usage tracked via **HTTP-only cookie**
-- Cookie is cleared when the user registers or logs in
+- Anonymous usage is tracked using an **HTTP-only cookie**
+- Cookie is automatically cleared after login or registration
+- Ensures smooth transition from anonymous to authenticated usage
 
 ### 🔗 URL Shortening & QR Code
 
 - Create short URLs easily
 - QR code generation for authenticated users
 - Click analytics dashboard for authenticated users
+
+- Generate short URLs instantly
+- Redirect users using short links
+- QR code generation for authenticated users
+- QR codes are generated on demand (not stored on the client)
 
 ### 🎨 UI/UX
 
