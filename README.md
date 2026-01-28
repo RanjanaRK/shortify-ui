@@ -1,8 +1,9 @@
 # 🔗 Shortify – Frontend
 
-Frontend client for a production-grade Shortify built with **Next.js**, **React**, **Tailwind CSS**, **Shadcn**, and **JWT authentication**.
+Frontend client for **Shortify**, a production-grade URL shortener built with **Next.js (App Router)**, **React**, **Tailwind CSS**, and **shadcn/ui**.
 
-It integrates with the backend to provide secure URL shortening, anonymous usage support, analytics, and on-demand QR code generation.
+The frontend integrates with the Shortify backend to provide secure URL shortening, anonymous usage support, analytics dashboards, and on-demand QR code generation.
+.
 
 ---
 
@@ -11,7 +12,8 @@ It integrates with the backend to provide secure URL shortening, anonymous usage
 ### 🔐 Authentication (Overview)
 
 - Authentication is handled by the backend
-- Secure HTTP-only cookies are used for session management
+- JWTs are stored in **secure HTTP-only cookies**
+- Frontend never stores or accesses tokens directly
 - Frontend relies on browser-managed cookies for authenticated requests
 - No sensitive tokens are stored or accessed on the client
 
