@@ -91,18 +91,14 @@ MongoDB
 
 ```
 
-src/
-
-app/
+src/app/
+├── analytics/[slug]/page.tsx
 ├── auth/
-│ ├── login/
-│ └── register/
-├── dashboard/
-├── page.tsx
+│   ├── login/page.tsx
+│   └── signup/page.tsx
 ├── layout.tsx
-components/
-lib/
-styles/
+├── page.tsx
+
 
 ```
 
