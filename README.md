@@ -161,7 +161,7 @@ https://github.com/RanjanaRK/shortify-backend
 
 ---
 
-# 👨‍💻 Author
+## 👨‍💻 Author
 
 **Ranjana Kumari**  
 Full-Stack Developer (Next.js · Node.js · MongoDB · Express)
