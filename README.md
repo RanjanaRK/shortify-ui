@@ -56,6 +56,7 @@ The frontend integrates with the Shortify backend to provide secure URL shorteni
 - **React**
 - **Tailwind CSS**
 - **shadcn/ui**
+- **Recharts** (data visualization)
 - **Ky** (HTTP client for API communication)
 
 ---
@@ -152,6 +153,16 @@ http://localhost:3000
 - Centralized error handling for API failures
 
 * No authentication tokens are stored on the client
+
+---
+
+## 🧪 Testing & Validation
+
+- The application was tested during development to validate core user flows
+- Key scenarios tested include:
+  - Authentication-based route access
+  - URL redirection and analytics views
+- Test-related files were removed before deployment to keep the repository minimal
 
 ---
 
