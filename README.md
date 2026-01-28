@@ -26,10 +26,6 @@ The frontend integrates with the Shortify backend to provide secure URL shorteni
 
 ### 🔗 URL Shortening & QR Code
 
-- Create short URLs easily
-- QR code generation for authenticated users
-- Click analytics dashboard for authenticated users
-
 - Generate short URLs instantly
 - Redirect users using short links
 - QR code generation for authenticated users
@@ -38,17 +34,19 @@ The frontend integrates with the Shortify backend to provide secure URL shorteni
 ### 🎨 UI/UX
 
 - Responsive and mobile-friendly
-- Clean dashboard layout with Tailwind CSS
+- Clean dashboard layout
+- Accessible UI components powered by **shadcn/ui**
+- Styled using **Tailwind CSS**
 
 ---
 
 ## 🛠 Tech Stack
 
-- Next.js (App Router)
-- React
-- Tailwind CSS
-- shadcn/ui
-- Ky (API communication)
+- **Next.js** (App Router)
+- **React**
+- **Tailwind CSS**
+- **shadcn/ui**
+- **Ky** (HTTP client for API communication)
 
 ---
 
