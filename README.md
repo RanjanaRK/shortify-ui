@@ -148,19 +148,19 @@ http://localhost:3000
 
 ---
 
-##📡 API Communication
+## 📡 API Communication
 
-Ky is used for all API requests
+- Ky is used for all API requests
 
-Cookies are sent automatically with each request
+* Cookies are sent automatically with each request
 
-Centralized error handling for API failures
+- Centralized error handling for API failures
 
-No authentication tokens are stored on the client
+* No authentication tokens are stored on the client
 
 ---
 
-##🌐 Backend Repository
+## 🌐 Backend Repository
 
 https://github.com/RanjanaRK/shortify-backend
 
