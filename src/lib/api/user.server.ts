@@ -21,7 +21,6 @@ export const getCurrentUserServer = async () => {
     });
 
     const data = await res.json();
-
     return data;
   } catch (error) {
     if (error instanceof HTTPError) {
