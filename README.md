@@ -165,7 +165,7 @@ http://localhost:3000
 
 ## 🌐 Backend Repository
 
-https://github.com/RanjanaRK/shortify-backend
+https://github.com/RanjanaRK/shortify-api
 
 ---
 
@@ -180,5 +180,4 @@ Full-Stack Developer (Next.js · Node.js · MongoDB · Express)
 
 ## 📄 License
 
-This project is licensed under the **MIT License**.  
-See the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License**.

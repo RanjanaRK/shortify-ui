@@ -1,8 +1,8 @@
 {
   "name": "shortify-ui",
+  "description": "Frontend client for Shortify a URL shortener built with Next.js App Router, Tailwind CSS, and shadcn/ui",
   "version": "0.1.0",
   "private": true,
-  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,6 +10,24 @@
     "lint": "eslint",
     "test": "jest",
     "test:watch": "jest --watch"
+  },
+  "keywords": [
+    "nextjs",
+    "react",
+    "frontend",
+    "url-shortener",
+    "shortify",
+    "tailwindcss",
+    "shadcn-ui",
+    "dashboard",
+    "analytics",
+    "jwt-auth",
+    "web-app"
+  ],
+  "author": "Ranjana Kumari",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RanjanaRK/shortify-ui/issues"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
