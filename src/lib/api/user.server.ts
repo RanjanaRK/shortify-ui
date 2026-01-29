@@ -22,7 +22,6 @@ export const getCurrentUserServer = async () => {
 
     const data = await res.json();
 
-    console.log("Current user:", data);
     return data;
   } catch (error) {
     if (error instanceof HTTPError) {
@@ -55,7 +54,6 @@ export const getUserUrlLinks = async () => {
 
     const data = await res.json<GetUrlsResponse>();
 
-    console.log("Fetched URLs:", data);
     return data;
   } catch (error) {
     if (error instanceof HTTPError) {

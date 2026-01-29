@@ -34,8 +34,8 @@ const UserProfile = ({ user }: { user: User }) => {
     const { message, success } = await deleteAccount();
     if (success) {
       toast.success(message);
-      refresh();
       push("/auth/login");
+      refresh();
     }
   };
   return (

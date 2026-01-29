@@ -9,8 +9,6 @@ const Header = async () => {
   const at = (await cookies()).get("access_token")?.value;
   const rt = (await cookies()).get("refresh_token")?.value;
 
-  console.log(data);
-
   if (!rt) return <AuthButton />;
   return <UserProfile user={data.user} />;
 };
