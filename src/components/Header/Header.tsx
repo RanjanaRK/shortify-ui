@@ -1,16 +1,32 @@
-import { getCurrentUserServer } from "@/lib/api/user.server";
-import { cookies } from "next/headers";
+"use client";
+
+import { kyClient } from "@/lib/ky/kyClient";
+import { User } from "@/lib/types";
+import { useEffect, useState } from "react";
 import UserProfile from "../UserProfile";
 import AuthButton from "./AuthButton";
 
 const Header = async () => {
-  const data = await getCurrentUserServer();
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const at = (await cookies()).get("access_token")?.value;
-  const rt = (await cookies()).get("refresh_token")?.value;
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      try {
+        const res = await kyClient.get("api/user/me").json<{ user: User }>();
+        setUser(res.user ?? null);
+      } catch (err) {
+        console.error(err);
+        setUser(null);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  if (!rt) return <AuthButton />;
-  return <UserProfile user={data.user} />;
+    fetchCurrentUser();
+  }, []);
+  if (loading) return null; // Or skeleton/header placeholder
+  return user ? <UserProfile user={user} /> : <AuthButton />;
 };
 
 export default Header;
