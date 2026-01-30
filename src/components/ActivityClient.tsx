@@ -1,9 +1,10 @@
-"use client ";
+"use client";
 
 import { kyClient } from "@/lib/ky/kyClient";
 import { GetUrlsResponse } from "@/lib/types";
-import { useEffect, useState } from "react";
+
 import UserLinks from "./UserLinks";
+import { useEffect, useState } from "react";
 
 const ActivityClient = () => {
   const [urls, setUrls] = useState<GetUrlsResponse | null>(null);
