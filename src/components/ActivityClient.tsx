@@ -1,16 +1,15 @@
 "use client";
 
-import { useCurrentUser } from "@/hooks/useUser";
-import AuthButton from "./Header/AuthButton";
-import UserProfile from "./UserProfile";
+import { useUserUrls } from "@/hooks/useUser";
+import UserLinks from "./UserLinks";
 
 const ActivityClient = () => {
-  const { data: user, isLoading } = useCurrentUser();
+  const { data: urls, isLoading, isError } = useUserUrls();
 
-  if (isLoading) return null;
-  if (!user) return <AuthButton />;
+  if (isLoading) return <p>Loading activity...</p>;
+  if (isError || !urls?.success) return <p>Login to see your activity</p>;
 
-  return <UserProfile user={user} />;
+  return <UserLinks urls={urls} />;
 };
 
 export default ActivityClient;
