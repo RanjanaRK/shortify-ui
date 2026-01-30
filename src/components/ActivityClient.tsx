@@ -1,41 +1,16 @@
 "use client";
 
-import { kyClient } from "@/lib/ky/kyClient";
-import { GetUrlsResponse } from "@/lib/types";
-import { useEffect, useState } from "react";
-import UserLinks from "./UserLinks";
+import { useCurrentUser } from "@/hooks/useUser";
+import AuthButton from "./Header/AuthButton";
+import UserProfile from "./UserProfile";
 
 const ActivityClient = () => {
-  const [urls, setUrls] = useState<GetUrlsResponse | null>(null);
-  const [loading, setLoading] = useState(true);
+  const { data: user, isLoading } = useCurrentUser();
 
-  useEffect(() => {
-    const fetchUrls = async () => {
-      try {
-        const data = await kyClient
-          .get("api/user/activity")
-          .json<GetUrlsResponse>();
-        setUrls(data);
-      } catch (err) {
-        console.error(err);
-        setUrls({
-          success: false,
-          data: [],
-          count: 0,
-          message: "Failed to fetch",
-        });
-      } finally {
-        setLoading(false);
-      }
-    };
+  if (isLoading) return null;
+  if (!user) return <AuthButton />;
 
-    fetchUrls();
-  }, []);
-
-  if (loading) return <p>Loading activity...</p>;
-  if (!urls || !urls.success) return <p>Login to see your activity</p>;
-
-  return <UserLinks urls={urls} />;
+  return <UserProfile user={user} />;
 };
 
 export default ActivityClient;
