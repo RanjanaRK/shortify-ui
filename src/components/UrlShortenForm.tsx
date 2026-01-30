@@ -21,13 +21,10 @@ import {
 } from "./ui/form";
 import { Input } from "./ui/input";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const UrlShortenForm = () => {
   const [shortUrl, setShortUrl] = useState<string>("");
   const [copied, setCopied] = useState(false);
-
-  const queryClient = useQueryClient();
 
   const form = useForm<UrlFormSchemaType>({
     resolver: zodResolver(urlFormSchema),
@@ -37,23 +34,20 @@ const UrlShortenForm = () => {
   });
 
   const handleSumbit = async (urlData: UrlFormSchemaType) => {
-    const mutation = useMutation({
-      mutationFn: () => UrlShorten(urlData),
-      onSuccess: (res) => {
-        if (res.success) {
-          setShortUrl(res.data?.shortUrl!);
-          toast.success(res.message);
-          queryClient.invalidateQueries({ queryKey: ["userUrls"] });
-        } else {
-          toast.error(res.message);
-        }
-      },
-      onError: (err: any) => {
-        toast.error(err.message || "Something went wrong");
-      },
-    });
+    try {
+      const { data, message, success } = await UrlShorten(urlData);
 
-    mutation.mutate();
+      if (success) {
+        toast.success(message);
+        setShortUrl(data?.shortUrl!);
+        await urlRefetchAction();
+      }
+      if (!success) {
+        toast.error(message);
+      }
+    } catch (err: any) {
+      toast.error(err.message);
+    }
   };
 
   const handleCopy = async () => {
