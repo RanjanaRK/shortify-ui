@@ -9,7 +9,7 @@ type Props = {
 
 const UrlAnalyticsModal = ({ url }: Props) => {
   if (!url) {
-    return <p className="text-sm text-gray-400">Loading analytics…</p>;
+    return <p className="text-sm text-white">Loading analytics…</p>;
   }
 
   return (

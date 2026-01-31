@@ -9,27 +9,24 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { loginAction } from "@/hooks/action";
 import useLogin from "@/lib/api/auth/login";
 import { LoginFormSchemaType } from "@/lib/types";
 import { loginFormSchema } from "@/lib/zodSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useQueryClient } from "@tanstack/react-query";
 import { Eye, EyeClosed } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
 const LoginForm = () => {
   const router = useRouter();
   const [show, setShow] = useState(false);
+
+  const queryClient = useQueryClient();
+
   const form = useForm<LoginFormSchemaType>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
@@ -42,9 +39,10 @@ const LoginForm = () => {
     const { success, message } = await useLogin(loginData);
     if (success) {
       toast.success(message);
+      await queryClient.invalidateQueries({
+        queryKey: ["currentUser"],
+      });
 
-      await loginAction();
-      router.refresh();
       router.push("/");
     } else {
       toast.error(message);

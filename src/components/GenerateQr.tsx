@@ -10,9 +10,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { urlRefetchAction } from "@/hooks/action";
-import { generateQrCode } from "@/lib/api/url";
-import { UrlFormSchemaType } from "@/lib/types";
+import { useQrUrl } from "@/hooks/useUrl";
+import { GenerateQrResponse, UrlFormSchemaType } from "@/lib/types";
 import { urlFormSchema } from "@/lib/zodSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LinkIcon, LoaderIcon } from "lucide-react";
@@ -22,7 +21,8 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
 const GenerateQr = () => {
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<GenerateQrResponse | null>(null);
+  const { mutateAsync } = useQrUrl();
 
   const form = useForm<UrlFormSchemaType>({
     resolver: zodResolver(urlFormSchema),
@@ -33,17 +33,12 @@ const GenerateQr = () => {
 
   const onSubmit = async (values: UrlFormSchemaType) => {
     try {
-      const { data, message, success } = await generateQrCode(
-        values.originalUrl,
-      );
-
-      if (success) {
-        toast.success(message);
-        setData(data);
-        await urlRefetchAction();
-      }
-      if (!success) {
-        toast.error(message);
+      const res = await mutateAsync(values.originalUrl);
+      if (res.success) {
+        setData(res.data);
+        toast.success(res.message);
+      } else {
+        toast.error(res.message);
       }
     } catch (err: any) {
       toast.error(err.message);

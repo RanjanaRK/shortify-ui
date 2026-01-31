@@ -1,12 +1,15 @@
-import AnalyticsPageClient from "@/components/AnalyticsPageClient";
+import ClickAnalyticsMain from "@/components/ClickAnalyticsMain";
+
 interface PageProps {
   params: { slug: string };
 }
 
-const page = async ({ params }: PageProps) => {
+const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = await params;
+
   return (
     <>
-      <AnalyticsPageClient slug={params.slug} />;
+      <ClickAnalyticsMain slug={slug} />
     </>
   );
 };

@@ -1,13 +1,16 @@
-// src/hooks/useUser.ts
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { getCurrentUser, getUserUrlLinks } from "@/lib/api/user.client";
+import {
+  getCurrentUser,
+  getUrlAnalytics,
+  getUserUrlLinks,
+} from "@/lib/api/user.client";
+import { useQuery } from "@tanstack/react-query";
 
 export const useCurrentUser = () => {
   return useQuery({
     queryKey: ["currentUser"],
     queryFn: getCurrentUser,
-    staleTime: 1000 * 60,
-    refetchOnWindowFocus: true,
+    retry: false,
+    refetchOnWindowFocus: false,
   });
 };
 
@@ -16,18 +19,16 @@ export const useUserUrls = () => {
     queryKey: ["userUrls"],
     queryFn: getUserUrlLinks,
     staleTime: 0,
-    refetchOnWindowFocus: true,
+    refetchOnWindowFocus: false,
   });
 };
-// export const useUrlMutation = (
-//   mutationFn: (data: UrlFormSchemaType) => Promise<any>,
-// ) => {
-//   const queryClient = useQueryClient();
 
-//   return useMutation<any, Error, UrlFormSchemaType>({
-//     mutationFn,
-//     onSuccess: () => {
-//       queryClient.invalidateQueries(["userUrls"]); // auto refresh
-//     },
-//   });
-// };
+export const useClickanalytics = (urlId: string) => {
+  return useQuery({
+    queryKey: ["urlAnalytics", urlId],
+    queryFn: getUrlAnalytics,
+    enabled: !!urlId,
+    staleTime: 0,
+    refetchOnWindowFocus: false,
+  });
+};

@@ -6,11 +6,7 @@ import { DailyClicksChart } from "./DailyClickChart";
 import { RecentClicks } from "./ui/RecentClick";
 import { StatsPieChart } from "./ui/StatsPieChart";
 
-export default function AnalyticsDashboard({
-  data,
-}: {
-  data: UrlAnalyticsResponse;
-}) {
+const UrlAnalytics = ({ data }: { data: UrlAnalyticsResponse }) => {
   return (
     <div className="space-y-6">
       <h1 className="text-background text-2xl font-bold md:text-3xl">
@@ -79,4 +75,5 @@ export default function AnalyticsDashboard({
       </Card>
     </div>
   );
-}
+};
+export default UrlAnalytics;

@@ -1,7 +1,9 @@
-import ky, { HTTPError } from "ky";
+import ky from "ky";
+
+const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export const kyClient = ky.create({
-  prefixUrl: "https://shortify-api-ltue.onrender.com/",
+  prefixUrl: baseUrl,
   credentials: "include",
   mode: "cors",
   cache: "no-store",

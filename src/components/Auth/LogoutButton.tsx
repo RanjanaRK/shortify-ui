@@ -3,17 +3,23 @@ import uselogout from "@/lib/api/auth/logout";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { Button } from "../ui/button";
+import { useQueryClient } from "@tanstack/react-query";
 
 const LogoutButton = () => {
   const router = useRouter();
+
+  const queryClient = useQueryClient();
 
   const handleLogout = async () => {
     const result = await uselogout();
 
     if (result.success) {
       toast.success(result.message || "Logged out successfully");
+
+      queryClient.setQueryData(["currentUser"], null);
+      queryClient.removeQueries({ queryKey: ["userUrls"] });
+
       router.push("/");
-      router.refresh();
     } else {
       toast.error(result.message);
     }

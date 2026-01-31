@@ -2,13 +2,16 @@
 
 import { kyClient } from "@/lib/ky/kyClient";
 import {
+  ApiResponse,
   GenerateQrResponse,
   MessageResponse,
   UrlFormSchemaType,
 } from "@/lib/types";
 import { HTTPError } from "ky";
 
-export const UrlShorten = async (urlData: UrlFormSchemaType) => {
+export const UrlShorten = async (
+  urlData: UrlFormSchemaType,
+): Promise<ApiResponse<MessageResponse>> => {
   try {
     const response = await kyClient.post("api/urlShort", {
       json: {
@@ -41,15 +44,15 @@ export const UrlShorten = async (urlData: UrlFormSchemaType) => {
   }
 };
 
-export const generateQrCode = async (originalUrl: string) => {
+export const generateQrCode = async (
+  originalUrl: string,
+): Promise<ApiResponse<GenerateQrResponse>> => {
   try {
     const response = await kyClient.post("api/qr/generate", {
       json: { originalUrl },
     });
 
     const result = await response.json<GenerateQrResponse>();
-
-    console.log(result);
 
     return {
       success: true,

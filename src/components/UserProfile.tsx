@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { deleteAccount } from "@/lib/api/user";
 import { User } from "@/lib/types";
+import { useQueryClient } from "@tanstack/react-query";
 import { Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -30,12 +31,17 @@ const UserProfile = ({ user }: { user: User }) => {
   const [open, setOpen] = useState(false);
   const { push, refresh } = useRouter();
 
+  const queryClient = useQueryClient();
+
   const handleDelete = async () => {
     const { message, success } = await deleteAccount();
     if (success) {
       toast.success(message);
+
+      queryClient.setQueryData(["currentUser"], null);
+      queryClient.removeQueries({ queryKey: ["userUrls"] });
+
       push("/auth/login");
-      refresh();
     }
   };
   return (

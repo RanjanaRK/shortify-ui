@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-
 const proxy = async (req: NextRequest) => {
   const accessToken = req.cookies.get("access_token")?.value;
   const refreshToken = req.cookies.get("refresh_token")?.value;
@@ -20,5 +19,5 @@ const proxy = async (req: NextRequest) => {
 export default proxy;
 
 export const config = {
-  matcher: ["/analytics/:slug"],
+  matcher: ["/profile"],
 };

@@ -16,6 +16,19 @@ export type MessageResponse = {
   shortUrl: string;
 };
 
+export type ApiSuccess<T> = {
+  success: true;
+  message: string;
+  data: T;
+};
+
+export type ApiError = {
+  success: false;
+  message: string;
+};
+
+export type ApiResponse<T> = ApiSuccess<T> | ApiError;
+
 export type User = {
   _id: string;
   name: string;
@@ -68,7 +81,6 @@ export type RecentClick = {
 };
 
 export type GenerateQrResponse = {
-  success: boolean;
   message: string;
   qr: string;
   shortUrl: string;

@@ -1,7 +1,6 @@
 "use client";
 
-import { urlRefetchAction } from "@/hooks/action";
-import { UrlShorten } from "@/lib/api/url";
+import { useShortenUrl } from "@/hooks/useUrl";
 import { UrlFormSchemaType } from "@/lib/types";
 import { urlFormSchema } from "@/lib/zodSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -26,6 +25,8 @@ const UrlShortenForm = () => {
   const [shortUrl, setShortUrl] = useState<string>("");
   const [copied, setCopied] = useState(false);
 
+  const { mutateAsync, isPending } = useShortenUrl();
+
   const form = useForm<UrlFormSchemaType>({
     resolver: zodResolver(urlFormSchema),
     defaultValues: {
@@ -35,15 +36,13 @@ const UrlShortenForm = () => {
 
   const handleSumbit = async (urlData: UrlFormSchemaType) => {
     try {
-      const { data, message, success } = await UrlShorten(urlData);
+      const res = await mutateAsync(urlData);
 
-      if (success) {
-        toast.success(message);
-        setShortUrl(data?.shortUrl!);
-        await urlRefetchAction();
-      }
-      if (!success) {
-        toast.error(message);
+      if (res.success) {
+        setShortUrl(res.data.shortUrl);
+        toast.success(res.message);
+      } else {
+        toast.error(res.message);
       }
     } catch (err: any) {
       toast.error(err.message);
@@ -85,8 +84,12 @@ const UrlShortenForm = () => {
             )}
           />
 
-          <Button type="submit" className="w-full bg-green-800">
-            Shorten URL
+          <Button
+            type="submit"
+            className="w-full bg-green-800"
+            disabled={form.formState.isSubmitting}
+          >
+            {form.formState.isSubmitting ? "Shortening..." : "Shorten URL"}
           </Button>
         </form>
       </Form>

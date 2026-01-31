@@ -13,10 +13,6 @@ const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
 
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
-  if (!urls.success) {
-    return <p>Login to see your activity</p>;
-  }
-
   const handleCopy = async (shortUrl: string, id: string) => {
     await navigator.clipboard.writeText(shortUrl);
     setCopiedId(id);
@@ -40,7 +36,7 @@ const UserLinks = ({ urls }: { urls: GetUrlsResponse }) => {
                   {url.originalUrl}
                 </p>
 
-                <p className="truncate font-semibold text-sky-600">
+                <p className="font-semibold wrap-break-word text-sky-600">
                   {shortUrl}
                 </p>
                 <div

@@ -1,8 +1,8 @@
 import { kyClient } from "../ky/kyClient";
-import { GetUrlsResponse, User } from "../types";
+import { GetUrlsResponse, UrlAnalyticsResponse, User } from "../types";
 import { HTTPError } from "ky";
 
-export const getCurrentUser = async (): Promise<User | null> => {
+export const getCurrentUser = async () => {
   try {
     const res = await kyClient
       .get("api/user/me", {
@@ -13,21 +13,13 @@ export const getCurrentUser = async (): Promise<User | null> => {
     return res.user ?? null;
   } catch (error) {
     if (error instanceof HTTPError) {
-      // Server returned a non-2xx response
-      console.error(
-        "getCurrentUser HTTP error:",
-        error.response.status,
-        error.response.statusText,
-      );
-    } else {
-      // Network or unexpected error
-      console.error("getCurrentUser network error:", error);
+      const body = await error.response.json<{ message?: string }>();
     }
     return null;
   }
 };
 
-export const getUserUrlLinks = async (): Promise<GetUrlsResponse> => {
+export const getUserUrlLinks = async () => {
   try {
     const res = await kyClient
       .get("api/user/activity", {
@@ -38,20 +30,24 @@ export const getUserUrlLinks = async (): Promise<GetUrlsResponse> => {
     return res;
   } catch (error) {
     if (error instanceof HTTPError) {
-      console.error(
-        "getUserUrlLinks HTTP error:",
-        error.response.status,
-        error.response.statusText,
-      );
-    } else {
-      console.error("getUserUrlLinks network error:", error);
+      const body = await error.response.json<{ message?: string }>();
     }
+    return null;
+  }
+};
 
-    return {
-      success: false,
-      count: 0,
-      data: [],
-      message: "Failed to fetch user URLs",
-    };
+export const getUrlAnalytics = async ({ queryKey }: any) => {
+  const [, urlId] = queryKey;
+  try {
+    const res = await kyClient(`api/urls/analytics/${urlId}`);
+
+    const data = await res.json<UrlAnalyticsResponse>();
+
+    return data;
+  } catch (error) {
+    if (error instanceof HTTPError) {
+      const body = await error.response.json<{ message?: string }>();
+    }
+    return null;
   }
 };
