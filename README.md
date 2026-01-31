@@ -50,6 +50,9 @@ The frontend integrates with the Shortify backend to provide secure URL shorteni
 
 ---
 
+![Screenshot](./public/ss/ss1.png)
+![Screenshot](./public/ss/ss2.png)
+
 ## 🛠 Tech Stack
 
 - **Next.js** (App Router)
