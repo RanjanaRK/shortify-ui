@@ -61,6 +61,7 @@ The frontend integrates with the Shortify backend to provide secure URL shorteni
 - **shadcn/ui**
 - **Recharts** (data visualization)
 - **Ky** (HTTP client for API communication)
+- **Tanstack query**
 
 ---
 
