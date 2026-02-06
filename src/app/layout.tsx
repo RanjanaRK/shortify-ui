@@ -5,6 +5,7 @@ import { ReactNode } from "react";
 import { ToastContainer } from "react-toastify";
 import ClientProvider from "./ClientProvider";
 import "./globals.css";
+import Footer from "@/components/Footer/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,7 +39,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
               {children}
             </div>
           </main>
-
+          <Footer />
           <ToastContainer position="top-left" />
         </ClientProvider>
       </body>
